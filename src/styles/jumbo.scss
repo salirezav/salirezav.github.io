@@ -1,0 +1,53 @@
+@import "variables";
+.jumbo {
+  img.avatar {
+    border-radius: 50%;
+    border: .4em solid lightseagreen;
+  }
+  &.contentWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .jumbo_left {
+    padding: 2em 3em;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    h4 {
+      margin-top: 1em;
+    }
+    * {
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+  .jumbo_right {
+    width: 100%;
+    align-self: center;
+    padding-left: 10em;
+    h3 {
+      position: relative;
+      font-size: 3em;
+      text-transform: capitalize;
+      &:before {
+        content: " ";
+        width: 1.1em;
+        height: 0px;
+        border-top: $jingil;
+        display: block;
+        position: absolute;
+        top: 7px;
+        left: 0;
+      }
+    }
+    p {
+      font-size: 1.4em;
+    }
+
+    * {
+      display: block;
+      //   background-color: $lighter-bg;
+    }
+  }
+}

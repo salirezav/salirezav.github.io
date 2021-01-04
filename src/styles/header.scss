@@ -1,0 +1,14 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    li {
+      padding: 0 0.3em;
+      a {
+        cursor: pointer;
+      }
+    }
+  }
+}

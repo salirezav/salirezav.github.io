@@ -1,17 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDom from 'react-dom'
+import { MyHeader } from './components/header'
+import './styles/index.scss';
+import { Jumbo } from './components/jumbo';
+import { Wrapper } from './components/wrapper';
+import { ContentWrapper } from "./components/contentWrapper";
+import Section from './components/section';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function SAV(params) {
+  return (
+    <>
+      {/* Header and jumbotron */}
+      <Wrapper className="headerWrapper">
+        <ContentWrapper className="header">
+          <MyHeader />
+        </ContentWrapper>
+      </Wrapper>
+      <Wrapper className="jumboWrapper">
+        <ContentWrapper className="jumbo">
+          <Jumbo />
+        </ContentWrapper>
+      </Wrapper>
+
+      {/* The rest of the content */}
+      <main>
+        <Wrapper className="content">
+          <ContentWrapper className="about">
+            <Section id="about" title="About" />
+          </ContentWrapper>
+          <ContentWrapper className="about">
+            <Section id="about" title="About" />
+          </ContentWrapper>
+          <ContentWrapper className="about">
+            <Section id="about" title="About" />
+          </ContentWrapper>
+          <ContentWrapper className="about">
+            <Section id="about" title="About" />
+          </ContentWrapper>
+        </Wrapper>
+      </main>
+    </>
+  )
+
+}
+ReactDom.render(<SAV />, document.getElementById('root'))
