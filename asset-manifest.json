@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/salirezav.github.io/static/css/main.48038bcf.chunk.css",
-    "main.js": "/salirezav.github.io/static/js/main.dbd4c33d.chunk.js",
-    "main.js.map": "/salirezav.github.io/static/js/main.dbd4c33d.chunk.js.map",
+    "main.css": "/salirezav.github.io/static/css/main.e7070e1e.chunk.css",
+    "main.js": "/salirezav.github.io/static/js/main.39aacc2b.chunk.js",
+    "main.js.map": "/salirezav.github.io/static/js/main.39aacc2b.chunk.js.map",
     "runtime-main.js": "/salirezav.github.io/static/js/runtime-main.7d780711.js",
     "runtime-main.js.map": "/salirezav.github.io/static/js/runtime-main.7d780711.js.map",
-    "static/js/2.18ededd2.chunk.js": "/salirezav.github.io/static/js/2.18ededd2.chunk.js",
-    "static/js/2.18ededd2.chunk.js.map": "/salirezav.github.io/static/js/2.18ededd2.chunk.js.map",
+    "static/js/2.22cba090.chunk.js": "/salirezav.github.io/static/js/2.22cba090.chunk.js",
+    "static/js/2.22cba090.chunk.js.map": "/salirezav.github.io/static/js/2.22cba090.chunk.js.map",
     "index.html": "/salirezav.github.io/index.html",
-    "static/css/main.48038bcf.chunk.css.map": "/salirezav.github.io/static/css/main.48038bcf.chunk.css.map",
-    "static/js/2.18ededd2.chunk.js.LICENSE.txt": "/salirezav.github.io/static/js/2.18ededd2.chunk.js.LICENSE.txt"
+    "static/css/main.e7070e1e.chunk.css.map": "/salirezav.github.io/static/css/main.e7070e1e.chunk.css.map",
+    "static/js/2.22cba090.chunk.js.LICENSE.txt": "/salirezav.github.io/static/js/2.22cba090.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7d780711.js",
-    "static/js/2.18ededd2.chunk.js",
-    "static/css/main.48038bcf.chunk.css",
-    "static/js/main.dbd4c33d.chunk.js"
+    "static/js/2.22cba090.chunk.js",
+    "static/css/main.e7070e1e.chunk.css",
+    "static/js/main.39aacc2b.chunk.js"
   ]
 }
