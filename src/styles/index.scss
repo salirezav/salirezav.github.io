@@ -10,6 +10,10 @@
   color: rgb(120, 129, 149);
   font-family: "Titillium Web", Calibri, Arial, sans-serif;
 }
+#root {
+  overflow: hidden;
+  min-width: 460px;
+}
 a {
   text-decoration: none;
 }
@@ -32,7 +36,7 @@ ul {
   padding: 5px 0;
   // background-color: $dark-bg;
   section {
-    height: 250px;
+    // height: 250px;
     margin: 10px 0px;
     padding: 20px 50px;
     background-color: #f2f2f4;
@@ -63,5 +67,21 @@ ul {
   background-color: $lighter-bg;
 }
 .jumboWrapper {
-  background-color: $dark-bg;
+  background: $dark-bg;
+  position: relative;
+
+  &:before {
+    // content: " ";
+    background-color: $dark-bg;
+    background-image: url("../static/bg.jpg");
+    background-size: cover;
+    background-blend-mode: luminosity;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+    opacity: 0.1;
+  }
 }

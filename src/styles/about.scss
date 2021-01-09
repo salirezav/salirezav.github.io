@@ -1,0 +1,56 @@
+@import "variables";
+
+.tabbed {
+  display: flex;
+  ul.tabContent {
+    padding: 2em;
+    margin: 0 2em;
+    width: 100%;
+    background-color: rgba(255, 100, 10, 0.1);
+    // display: flex;
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    li {
+      //   display: none;
+      //   position: absolute;
+      //   top: 0px;
+      //   left: 0px;
+      //   float: left;
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}
+ul.tabIcons {
+  li {
+    &:nth-child(1) {
+      margin-top: 1em;
+    }
+    span.icon {
+      padding: 0.5em;
+      overflow: hidden;
+      //   width: 2em;
+      //   height: 2em;
+      display: inline-flex;
+      background-color: $accent;
+      margin: 0.2em 0;
+      border-radius: 5%;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        transform: scale(1.1);
+      }
+      transition: transform 100ms ease-in-out;
+      cursor: pointer;
+    }
+    // &:hover {
+    //   span.icon {
+    //     transform: scale(1.5);
+    //   }
+    // }
+  }
+}
