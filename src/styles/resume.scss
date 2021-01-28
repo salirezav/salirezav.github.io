@@ -1,0 +1,15 @@
+@import "variables";
+.education {
+  li {
+    display: flex;
+    .left {
+      width: 5%;
+      background-color: $accent;
+      display: flex;
+      justify-content: center;
+      //   align-items: ;
+    }
+    .right {
+    }
+  }
+}

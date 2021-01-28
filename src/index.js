@@ -8,9 +8,10 @@ import { ContentWrapper } from "./components/contentWrapper";
 import Section from './components/section';
 import { About } from './components/about';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faCoffee, faHome, faFlask, faFile, faGem, faChalkboardTeacher, faNewspaper, faPaperPlane, faUserCircle, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faHome, faFlask, faFile, faGem, faChalkboardTeacher, faNewspaper, faPaperPlane, faUserCircle, faHeart, faMapMarkerAlt, faUserGraduate } from '@fortawesome/free-solid-svg-icons'
+import Resume from './components/resume';
 
-library.add(faCheckSquare, faCoffee, faHome, faFlask, faFile, faGem, faChalkboardTeacher, faNewspaper, faPaperPlane, faUserCircle, faHeart)
+library.add(faCheckSquare, faCoffee, faHome, faFlask, faFile, faGem, faChalkboardTeacher, faNewspaper, faPaperPlane, faUserCircle, faHeart, faMapMarkerAlt, faUserGraduate)
 
 
 
@@ -41,11 +42,13 @@ function SAV(params) {
         <Wrapper className="content">
           <ContentWrapper className="about">
             <Section id="about" title="About" className="about" icon="home" >
-              <About></About>
+              <About />
             </Section>
           </ContentWrapper>
           <ContentWrapper className="resume">
-            <Section id="resume" title="resume" className="resume" icon="file" />
+            <Section id="resume" title="resume" className="resume" icon="file" >
+              <Resume />
+            </Section>
           </ContentWrapper>
           <ContentWrapper className="research">
             <Section id="research" title="research" className="research" icon="flask" />
