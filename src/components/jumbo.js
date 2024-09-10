@@ -13,7 +13,7 @@ export const Jumbo = () => {
                 <span> <FontAwesomeIcon icon="map-marker-alt" /> Athens, GA</span>
             </div>
             <div className="jumbo_right">
-                <h3>My name is Alireza</h3>
+                <h3>Seyed Alireza Vaezi</h3>
                 <p>I am a student and a developer</p>
             </div>
         </>
