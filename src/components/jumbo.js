@@ -14,7 +14,7 @@ export const Jumbo = () => {
             </div>
             <div className="jumbo_right">
                 <h3>Seyed Alireza Vaezi</h3>
-                <p>I am a student and a developer</p>
+                <p>Ph.D. Candidate - Graduate Research Assistant</p>
             </div>
         </>
     )
