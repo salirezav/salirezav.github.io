@@ -116,7 +116,7 @@ const portfolioData: PortfolioData = {
       { name: "Website", url: "https://AlirezaVaezi.com", icon: Globe },
       { name: "Email", url: "mailto:s.alireza.v@gmail.com", icon: Mail },
       { name: "GitHub", url: "https://github.com/salirezav", icon: Github },
-      { name: "LinkedIn", url: "https://www.linkedin.com/in/seyed-alireza-vaezi/", icon: Linkedin },
+      { name: "LinkedIn", url: "https://www.linkedin.com/in/salirezav/", icon: Linkedin },
       { name: "Resume", url: "https://salirezav.github.io/Seyed%20Alireza%20Vaezi%20-%20Resume.pdf", icon: FileText }
     ]
   },
