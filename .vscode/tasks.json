@@ -1,0 +1,63 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Dev Server",
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": {
+        "runOn": "default"
+      }
+    },
+    {
+      "label": "Build",
+      "type": "npm",
+      "script": "build",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Deploy to GitHub Pages",
+      "type": "npm",
+      "script": "deploy",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "dependsOn": "Build"
+    },
+    {
+      "label": "Build and Deploy",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Build",
+        "Deploy to GitHub Pages"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Test",
+      "type": "npm",
+      "script": "test",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
