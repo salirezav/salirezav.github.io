@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Mail, Globe, ChevronDown, ChevronUp, Github, Linkedin, FileText, Brain, Briefcase, GraduationCap, Users, Code, Database, Wrench, BookOpen, LucideIcon } from 'lucide-react';
+import Stories from './Stories';
+import StoryDetail from './StoryDetail';
 
 /*
  * ===================================================================
@@ -11,7 +14,7 @@ import { Mail, Globe, ChevronDown, ChevronUp, Github, Linkedin, FileText, Brain,
 
 // --- Type Definitions ---
 
-interface Link {
+interface SocialLink {
   name: string;
   url: string;
   icon: LucideIcon;
@@ -23,7 +26,7 @@ interface PersonalInfo {
   phone: string;
   website: string;
   location: string;
-  links: Link[];
+  links: SocialLink[];
 }
 
 interface ActiveProject {
@@ -500,43 +503,77 @@ interface HeaderProps {
   info: PersonalInfo;
 }
 
-const Header: React.FC<HeaderProps> = ({ info }) => (
-  <header className="bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
-    <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between">
-      {/* Profile Image - Placeholder */}
-      <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
-        <div className="w-32 h-32 md:w-40 md:h-40 bg-gray-600 rounded-full flex items-center justify-center border-4 border-gray-500">
-          <span className="text-6xl md:text-7xl font-bold text-gray-300">AV</span>
+const Header: React.FC<HeaderProps> = ({ info }) => {
+  const location = useLocation();
+  const isStoriesPage = location.pathname.startsWith('/stories');
+
+  return (
+    <header className="bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
+      <div className="max-w-5xl mx-auto">
+        {/* Navigation */}
+        <nav className="mb-6 flex justify-center md:justify-start">
+          <div className="flex gap-4">
+            <Link
+              to="/"
+              className={`px-4 py-2 rounded-lg transition-colors duration-300 ${!isStoriesPage
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-700 hover:bg-gray-600 text-white'
+                }`}
+            >
+              Portfolio
+            </Link>
+            <Link
+              to="/stories"
+              className={`px-4 py-2 rounded-lg transition-colors duration-300 ${isStoriesPage
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-700 hover:bg-gray-600 text-white'
+                }`}
+            >
+              <BookOpen size={18} className="inline mr-2" />
+              Stories
+            </Link>
+          </div>
+        </nav>
+
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          {/* Profile Image */}
+          <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
+            <img
+              src="/me22.png"
+              alt="Profile"
+              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-gray-500"
+            />
+          </div>
+
+          {/* Info */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">{info.name}</h1>
+            <p className="text-xl text-gray-300 mb-6">Post-Doctoral Research Associate at the University of Georgia</p>
+
+            {/* Contact Links */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              {info.links.map((link) => {
+                const IconComponent = link.icon;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center bg-gray-700 hover:bg-blue-500 transition-colors duration-300 text-white font-medium py-2 px-4 rounded-lg shadow"
+                  >
+                    <IconComponent size={18} className="mr-2" />
+                    {link.name}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Info */}
-      <div className="flex-1 text-center md:text-left">
-        <h1 className="text-4xl md:text-5xl font-bold mb-2">{info.name}</h1>
-        <p className="text-xl text-gray-300 mb-6">Post-Doctoral Research Associate at the University of Georgia</p>
-
-        {/* Contact Links */}
-        <div className="flex flex-wrap justify-center md:justify-start gap-4">
-          {info.links.map((link) => {
-            const IconComponent = link.icon;
-            return (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center bg-gray-700 hover:bg-blue-500 transition-colors duration-300 text-white font-medium py-2 px-4 rounded-lg shadow"
-              >
-                <IconComponent size={18} className="mr-2" />
-                {link.name}
-              </a>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 interface CurrentRoleProps {
   role: CurrentRole;
@@ -716,15 +753,13 @@ const Footer: React.FC<FooterProps> = ({ name }) => (
 );
 
 
-// --- Main App Component ---
+// --- Home Page Component ---
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
   const data = portfolioData;
 
   return (
-    <div className="bg-gray-50 min-h-screen font-inter">
-      <Header info={data.personalInfo} />
-
+    <>
       <main className="max-w-5xl mx-auto p-4 md:p-8">
         <CurrentRoleSection role={data.currentRole} />
         <RelatedExperienceSection items={data.relatedExperience} />
@@ -734,8 +769,25 @@ const App: React.FC = () => {
         <ClassProjects items={data.projects} />
         <TeachingSection items={data.teaching} />
       </main>
-
       <Footer name={data.personalInfo.name} />
+    </>
+  );
+};
+
+// --- Main App Component ---
+
+const App: React.FC = () => {
+  const data = portfolioData;
+
+  return (
+    <div className="bg-gray-50 min-h-screen font-inter">
+      <Header info={data.personalInfo} />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/stories" element={<Stories />} />
+        <Route path="/stories/:id" element={<StoryDetail />} />
+      </Routes>
     </div>
   );
 };

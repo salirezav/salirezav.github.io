@@ -29,7 +29,7 @@ export const stories: Story[] = [
     id: 'example-story-1',
     title: 'My First DIY Project: Building a Custom Desk',
     date: '2024-01-15',
-    coverImage: '/me22.png', // You can replace this with actual project images
+    coverImage: '/placeholder.jpg',
     content: [
       {
         type: 'text',
@@ -41,7 +41,7 @@ export const stories: Story[] = [
       },
       {
         type: 'image',
-        imageUrl: '/me22.png',
+        imageUrl: '/placeholder.jpg',
         imageAlt: 'Desk in progress'
       },
       {
@@ -54,7 +54,7 @@ export const stories: Story[] = [
       },
       {
         type: 'image',
-        imageUrl: '/me22.png',
+        imageUrl: '/placeholder.jpg',
         imageAlt: 'Finished desk'
       }
     ]
@@ -63,7 +63,7 @@ export const stories: Story[] = [
     id: 'example-story-2',
     title: 'Gardening Adventures: Growing Tomatoes from Seed',
     date: '2024-02-20',
-    coverImage: '/me22.png',
+    coverImage: '/placeholder.jpg',
     content: [
       {
         type: 'text',
@@ -75,7 +75,7 @@ export const stories: Story[] = [
       },
       {
         type: 'image',
-        imageUrl: '/me22.png',
+        imageUrl: '/placeholder.jpg',
         imageAlt: 'Tomato seedlings'
       },
       {
