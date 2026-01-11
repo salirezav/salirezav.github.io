@@ -51,6 +51,7 @@ interface Education {
   date: string;
   gpa: string;
   thesis?: string;
+  advisor?: string;
 }
 
 type SkillLevel = 'Advanced' | 'Intermediate' | 'Basic';
@@ -72,6 +73,7 @@ interface RelatedExperience {
   date: string;
   supervisor?: string;
   location?: string;
+  department?: string;
   points: string[];
 }
 
@@ -80,6 +82,7 @@ interface Publication {
   authors: string;
   venue: string;
   link?: string;
+  linkText?: string;
 }
 
 interface Project {
@@ -95,6 +98,15 @@ interface Teaching {
   date: string;
 }
 
+interface IndustryOutreach {
+  title: string;
+  organization: string;
+  location: string;
+  date: string;
+  role: string;
+  topic: string;
+}
+
 interface PortfolioData {
   personalInfo: PersonalInfo;
   currentRole: CurrentRole;
@@ -104,6 +116,7 @@ interface PortfolioData {
   publications: Publication[];
   projects: Project[];
   teaching: Teaching[];
+  industryOutreach?: IndustryOutreach[];
 }
 
 // --- Data based on your resume ---
@@ -118,8 +131,10 @@ const portfolioData: PortfolioData = {
     links: [
       { name: "Website", url: "https://AlirezaVaezi.com", icon: Globe },
       { name: "Email", url: "mailto:s.alireza.v@gmail.com", icon: Mail },
+      { name: "UGA Email", url: "mailto:SeyedAlireza.Vaezi@uga.edu", icon: Mail },
       { name: "GitHub", url: "https://github.com/salirezav", icon: Github },
       { name: "LinkedIn", url: "https://www.linkedin.com/in/salirezav/", icon: Linkedin },
+      { name: "Google Scholar", url: "https://scholar.google.com/citations?user=YOUR_USER_ID", icon: BookOpen }, // TODO: Replace YOUR_USER_ID with your actual Google Scholar user ID
       { name: "Resume", url: "https://salirezav.github.io/Seyed%20Alireza%20Vaezi%20-%20Resume.pdf", icon: FileText }
     ]
   },
@@ -140,31 +155,32 @@ const portfolioData: PortfolioData = {
       title: "Pecan Post-Harvest Control and Optimization - Funded by USDA",
       description: "My role involves developing solutions for incorporating computer vision to analyze the output of pecan processing machinery, enabling real-time quality control and automation.",
       points: [
-        "Designed, developed, and deployed a full-stack vision system, including hardware integration and a custom management API.",
-        "Spearheaded the collection of a large-scale video dataset for training robust deep learning models.",
-        "Architected the framework for a closed-loop automation system to intelligently control and optimize machine parameters.",
-        "Engineered a solution that accelerates the research lifecycle by automating data analysis.",
-        "Presented 'AI Vision System and Automation Integration' research at the USDA Pecan Workshop 2025."
+        "Designed, developed, and deployed a full-stack vision system, including hardware integration and a custom management API for automated data acquisition and system control.",
+        "Spearheaded the collection of a large-scale video dataset, establishing the foundation for training robust deep learning models for defect detection and yield analysis.",
+        "Architected the framework for a closed-loop automation system where real-time analysis will intelligently control and optimize machine parameters.",
+        "Engineered a solution that accelerates the research lifecycle by automating data analysis, leading to faster, more accurate, and streamlined experimentation.",
+        "Presented 'AI Vision System and Automation Integration' research at the USDA Pecan Workshop 2025, hosted at the University of Georgia, to an audience of industry leaders and academic peers."
       ]
     }
   },
   education: [
-    {
-      degree: "Ph.D., Computer Science",
-      institution: "University of Georgia",
-      location: "Athens, Georgia",
-      date: "Jan. 2019 - May. 2025",
-      gpa: "3.74",
-      thesis: '"From Specific to Universal: One Biomedical Image Segmentation Model to Rule Them All"'
-    },
-    {
-      degree: "Master of Science., Information Technology Engineering",
-      institution: "Iran University of Science and Technology",
-      location: "Tehran, Iran",
-      date: "Jan. 2013 - Feb. 2016",
-      gpa: "3.06",
-      thesis: '"Performance Evaluation of Live Migration of Virtual Machines with Secured Data-Plane"'
-    },
+      {
+        degree: "Ph.D., Computer Science",
+        institution: "University of Georgia",
+        location: "Athens, Georgia",
+        date: "Jan. 2019 - May. 2025",
+        gpa: "3.74",
+        thesis: '"From Specific to Universal: One Biomedical Image Segmentation Model to Rule Them All"',
+        advisor: "Dr. Shannon Quinn"
+      },
+      {
+        degree: "Master of Science., Information Technology Engineering (Computer Networks)",
+        institution: "Iran University of Science and Technology",
+        location: "Tehran, Iran",
+        date: "Jan. 2013 - Feb. 2016",
+        gpa: "3.06",
+        thesis: '"Performance Evaluation of Live Migration of Virtual Machines with Secured Data-Plane"'
+      },
     {
       degree: "Bachelor of Science., Information Technology Engineering",
       institution: "Azad University of Parand",
@@ -266,8 +282,8 @@ const portfolioData: PortfolioData = {
       date: "2024",
       supervisor: "Prof. Shannon Quinn",
       points: [
-        "Developed a supervised cilia segmentation model by leveraging an unsupervised method to generate ground-truth labels.",
-        "Developed a non-intrusive emotion recognition framework using facial expression recognition (FER) and emotional body posture recognition (EBPR) to assess workers' psychological states in IIoT-enabled manufacturing environments. A collaboration with Dr. Jaime Camelio's lab.",
+        "Developed a supervised cilia segmentation model by leveraging an unsupervised method to generate ground-truth labels. This work focused on automating segmentation tasks, particularly for microscopic cilia images.",
+        "Developed a non-intrusive emotion recognition framework using facial expression recognition (FER) and emotional body posture recognition (EBPR) to assess workers' psychological states in IIoT-enabled manufacturing environments. This research enhances worker well-being by identifying stress, fatigue, and cognitive load in real time. A collaboration with PhD candidate Niloofar Rezaei in Innovation Factory under Dr. Jaime Camelio's supervision.",
         "Developed a computational model to analyze changes in mitochondrial morphology induced by infection with Mycobacterium marinum (Mmar)."
       ]
     },
@@ -278,7 +294,8 @@ const portfolioData: PortfolioData = {
       supervisor: "Prof. Shannon Quinn",
       points: [
         "Configuring and setting up 'JupyterHub' on an on-premise cluster with NFS shared storage and LDAP authenticator.",
-        "Configuring and setting up 'BinderHub' allowing students to create sharable, interactive, reproducible environments."
+        "Configuring and setting up 'BinderHub' allowing students to create sharable, interactive, reproducible environments.",
+        "Research and analysis on deep learning assisted detection of fusion and fission of mitochondria in microscopic images."
       ]
     },
     {
@@ -314,7 +331,8 @@ const portfolioData: PortfolioData = {
         "Improved the UI and the UX of the portal for hand-held devices.",
         "Reformed and improved the development tools and code structure by implementing the latest front-end development tools.",
         "Instructed five employees to use the new development environment."
-      ]
+      ],
+      department: "IT Department – Portal Section"
     }
   ],
   publications: [
@@ -322,7 +340,8 @@ const portfolioData: PortfolioData = {
       title: "Multi-Layer Multi-Variable Value Stream Mapping: A Comprehensive Framework Across Operational, Environmental, and Social Layers with Integrated KPIs Interrelationships",
       authors: "Heydarzadeh, A; Rezaei, N; Vaezi, Seyed Alireza, et al.",
       venue: "(2024)-53rd SME North American Manufacturing Research Conference (NAMRC 53, 2025)",
-      link: "https://www.sciencedirect.com/"
+      link: "https://www.sciencedirect.com/",
+      linkText: "ScienceDirect"
     },
     {
       title: "Smart Sensors, Smarter Workplaces: Multi-Modal Cognitive Load Assessment in Industry 4.0",
@@ -333,25 +352,29 @@ const portfolioData: PortfolioData = {
       title: "Identifying Virulence Determinants in Pathogenic Mycobacteria Via Changes in Host Cell Mitochondrial Morphology",
       authors: "S. Quinn; A. Abbadi; Vaezi, Seyed Alireza",
       venue: "[arXiv]",
-      link: "https://arxiv.org/"
+      link: "https://arxiv.org/",
+      linkText: "arXiv"
     },
     {
       title: "Training a Supervised Cilia Segmentation Model from Self-Supervision",
       authors: "Vaezi, Seyed Alireza, et al.",
       venue: "Proceedings of the 23rd Python in Science Conference (SciPy 2024)",
-      link: "https://www.researchgate.net/"
+      link: "https://www.researchgate.net/",
+      linkText: "ResearchGate | SciPy"
     },
     {
       title: "Decoding the Silent Language: A Framework for Advanced Visual Emotion Recognition to Enhance Worker Well-Being on IIoT-Enabled Manufacturing",
       authors: "Rezaei, Niloofar; Vaezi, Seyed Alireza, Jaime Camelio",
       venue: "(2024)-52nd SME North American Manufacturing Research Conference (NAMRC 52, 2024)",
-      link: "https://www.sciencedirect.com/"
+      link: "https://www.sciencedirect.com/",
+      linkText: "ScienceDirect"
     },
     {
       title: "A Novel Pipeline for Cell Instance Segmentation, Tracking and Motility Classification of Toxoplasma Gondii in 3D Space",
       authors: "Vaezi, Seyed Alireza, et al.",
       venue: "Proceedings of the 21st Python in Science Conference (SCIPY 2022)",
-      link: "https://www.researchgate.net/"
+      link: "https://www.researchgate.net/",
+      linkText: "ResearchGate | SciPy"
     }
   ],
   projects: [
@@ -380,6 +403,16 @@ const portfolioData: PortfolioData = {
     { course: "CSCI 1302 Software Development - Prof. Krzysztof J. Kochut", role: "Grading projects and assignments, and helping students in developing programs in Java.", date: "Summer 2019, Spring 2020" },
     { course: "CSCI 2720 Data Structures - Dr. Sachin Meena", role: "Grading and helping students with abstract data types, algorithm analysis, sorting, recursion.", date: "Fall 2019" },
     { course: "CSCI 4250/6250 Cybersecurity - Dr. Mustakimar Khandaker", role: "Grading projects and assignments on system security (stack/buffer overflow, return to libc attack, format string attack).", date: "Fall 2020" }
+  ],
+  industryOutreach: [
+    {
+      title: "UGA Manufacturing Living Lab Pop-Up Course",
+      organization: "University of Georgia",
+      location: "Athens, GA",
+      date: "Nov 2025",
+      role: "Lead Instructor",
+      topic: "Computer Vision for Manufacturing Upskilling"
+    }
   ]
 };
 
@@ -617,6 +650,7 @@ const EducationSection: React.FC<EducationProps> = ({ items }) => (
         <h3 className="text-xl font-semibold text-gray-800">{item.degree}</h3>
         <p className="text-lg text-gray-600">{item.institution}</p>
         <p className="text-sm text-gray-500 mb-2">{item.date} | {item.location} | GPA: {item.gpa}</p>
+        {item.advisor && <p className="text-sm text-gray-600 mb-2">Advisor: {item.advisor}</p>}
         {item.thesis && <p className="text-gray-700 italic">Thesis: {item.thesis}</p>}
       </Card>
     ))}
@@ -660,6 +694,7 @@ const RelatedExperienceSection: React.FC<RelatedExperienceProps> = ({ items }) =
       <Accordion key={index} title={item.title} subtitle={`${item.institution} | ${item.date}`}>
         <div className="p-4">
           {item.supervisor && <p className="text-md text-gray-600 mb-4">Under {item.supervisor}'s supervision</p>}
+          {item.department && <p className="text-md text-gray-600 mb-4">{item.department}</p>}
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             {item.points.map((point, pIndex) => (
               <li key={pIndex}>{point}</li>
@@ -690,7 +725,7 @@ const Publications: React.FC<PublicationsProps> = ({ items }) => (
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-800 hover:underline font-medium text-sm transition-colors"
             >
-              Read More &rarr;
+              {item.linkText || "Read More"} &rarr;
             </a>
           )}
         </Card>
@@ -739,6 +774,26 @@ const TeachingSection: React.FC<TeachingProps> = ({ items }) => (
   </Section>
 );
 
+interface IndustryOutreachProps {
+  items: IndustryOutreach[];
+}
+
+const IndustryOutreachSection: React.FC<IndustryOutreachProps> = ({ items }) => (
+  <Section title="Industry Outreach" icon={Briefcase}>
+    <div className="space-y-4">
+      {items.map((item, index) => (
+        <Card key={index} className="border-l-4 border-green-500">
+          <h3 className="text-xl font-semibold text-gray-800">{item.title}</h3>
+          <p className="text-lg text-gray-600">{item.organization}</p>
+          <p className="text-sm text-gray-500 mb-2">{item.date} | {item.location}</p>
+          <p className="text-gray-700 mb-2"><span className="font-semibold">Role:</span> {item.role}</p>
+          <p className="text-gray-700"><span className="font-semibold">Topic:</span> {item.topic}</p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+);
+
 interface FooterProps {
   name: string;
 }
@@ -768,6 +823,9 @@ const Home: React.FC = () => {
         <EducationSection items={data.education} />
         <ClassProjects items={data.projects} />
         <TeachingSection items={data.teaching} />
+        {data.industryOutreach && data.industryOutreach.length > 0 && (
+          <IndustryOutreachSection items={data.industryOutreach} />
+        )}
       </main>
       <Footer name={data.personalInfo.name} />
     </>

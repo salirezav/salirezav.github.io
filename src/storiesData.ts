@@ -26,6 +26,34 @@ export interface Story {
 
 export const stories: Story[] = [
   {
+    id: 'homesense-project',
+    title: 'HomeSense – A Case Study on Human Activity Patterns and Air Quality for Energy Saving in Smart Homes',
+    date: '2021-09-01',
+    coverImage: '/placeholder.jpg',
+    content: [
+      {
+        type: 'text',
+        content: 'HomeSense was a collaborative project with Niloofar Rezaei for the CPS8300 Principles of Cyber-Physical Systems course at the University of Georgia. The project focused on creating a smart home monitoring system that analyzes human activity patterns and air quality to optimize energy consumption.'
+      },
+      {
+        type: 'text',
+        content: 'The system utilized ESP32 microcontrollers equipped with multiple sensors to collect real-time data on temperature, humidity, light levels, infrared motion detection, and air quality. This comprehensive sensor array allowed us to monitor both environmental conditions and human presence patterns within the home environment.'
+      },
+      {
+        type: 'text',
+        content: 'One of the key technical challenges was programming the microcontrollers using MicroPython, which provided a Python-based development environment that was both powerful and accessible. This choice enabled rapid prototyping and easier integration of sensor data processing.'
+      },
+      {
+        type: 'text',
+        content: 'The collected data was analyzed to identify patterns in human activity and correlate them with air quality metrics. By understanding when and how spaces are used, along with environmental conditions, the system could provide recommendations for energy-saving strategies, such as optimizing HVAC usage based on occupancy patterns.'
+      },
+      {
+        type: 'text',
+        content: 'This project demonstrated the practical application of cyber-physical systems principles, combining hardware sensors, embedded programming, and data analysis to create an intelligent system that could contribute to both energy efficiency and improved indoor air quality in smart home environments.'
+      }
+    ]
+  },
+  {
     id: 'example-story-1',
     title: 'My First DIY Project: Building a Custom Desk',
     date: '2024-01-15',
