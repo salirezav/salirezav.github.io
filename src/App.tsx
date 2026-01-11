@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Mail, Globe, ChevronDown, ChevronUp, Github, Linkedin, FileText, Brain, Briefcase, GraduationCap, Users, Code, Database, Wrench, BookOpen, LucideIcon } from 'lucide-react';
+import { Mail, Globe, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Github, Linkedin, FileText, Brain, Briefcase, GraduationCap, Users, Code, Database, Wrench, BookOpen, LucideIcon } from 'lucide-react';
 import Stories from './Stories';
 import StoryDetail from './StoryDetail';
 
@@ -42,6 +42,7 @@ interface CurrentRole {
   date: string;
   duties: string[];
   activeProject: ActiveProject;
+  industryOutreach?: IndustryOutreach[];
 }
 
 interface Education {
@@ -105,6 +106,9 @@ interface IndustryOutreach {
   date: string;
   role: string;
   topic: string;
+  highlights?: string[];
+  links?: { name: string; url: string }[];
+  images?: { url: string; alt: string }[];
 }
 
 interface PortfolioData {
@@ -116,7 +120,6 @@ interface PortfolioData {
   publications: Publication[];
   projects: Project[];
   teaching: Teaching[];
-  industryOutreach?: IndustryOutreach[];
 }
 
 // --- Data based on your resume ---
@@ -161,7 +164,48 @@ const portfolioData: PortfolioData = {
         "Engineered a solution that accelerates the research lifecycle by automating data analysis, leading to faster, more accurate, and streamlined experimentation.",
         "Presented 'AI Vision System and Automation Integration' research at the USDA Pecan Workshop 2025, hosted at the University of Georgia, to an audience of industry leaders and academic peers."
       ]
-    }
+    },
+    industryOutreach: [
+      {
+        title: "UGA Manufacturing Living Lab Pop-Up Course",
+        organization: "University of Georgia",
+        location: "Athens, GA",
+        date: "November 18, 2025",
+        role: "Lead Instructor",
+        topic: "Computer Vision: From Pixels to Practical Applications",
+        highlights: [
+          "Led a 2.5-hour technical upskilling course for 21 manufacturing employees and STEM educators",
+          "Hosted at the Price Industries Innovation Factory within the UGA I-STEM complex",
+          "Provided hands-on training on computer vision fundamentals, deep learning, and embedded vision systems",
+          "Participants included employees from Price Industries, Boehringer Ingelheim, King's Hawaiian, KUBOTA, Georgia Power, Southwire, and MP Equipment",
+          "Educators from Clarke County, Gwinnett County, Monroe Area High School, and Barrow County Schools attended",
+          "Each participant received a take-home embedded vision kit to continue exploring the technology"
+        ],
+        links: [
+          {
+            name: "LinkedIn Post",
+            url: "https://www.linkedin.com/posts/uga-mll_computervision-objectdetection-digitalimaging-activity-7397752873926696960-zb-C?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAo67RUBYMrFl-pthRl_Qs3nQnSFBcy76NQ"
+          },
+          {
+            name: "Georgia AIM Article",
+            url: "https://georgiaaim.org/manufacturers-educators-attend-uga-pop-up-class-on-computer-vision/"
+          }
+        ],
+        images: [
+          { url: "/images/cv_pop_up_course/1763761393608.jpg", alt: "Computer Vision Pop-Up Course - Workshop participants" },
+          { url: "/images/cv_pop_up_course/1763761417741.jpg", alt: "Computer Vision Pop-Up Course - Training session" },
+          { url: "/images/cv_pop_up_course/1763761438590.jpg", alt: "Computer Vision Pop-Up Course - Hands-on learning" },
+          { url: "/images/cv_pop_up_course/1763761465666.jpg", alt: "Computer Vision Pop-Up Course - Participants working with embedded vision kits" },
+          { url: "/images/cv_pop_up_course/1763761490523.jpg", alt: "Computer Vision Pop-Up Course - Interactive demonstration" },
+          { url: "/images/cv_pop_up_course/1763761518808.jpg", alt: "Computer Vision Pop-Up Course - Workshop activities" },
+          { url: "/images/cv_pop_up_course/1763761550998.jpg", alt: "Computer Vision Pop-Up Course - Training at Price Industries Innovation Factory" },
+          { url: "/images/cv_pop_up_course/1763761580166.jpg", alt: "Computer Vision Pop-Up Course - Participants engaged in learning" },
+          { url: "/images/cv_pop_up_course/1763761611686.jpg", alt: "Computer Vision Pop-Up Course - Embedded vision kit demonstration" },
+          { url: "/images/cv_pop_up_course/1763761640518.jpg", alt: "Computer Vision Pop-Up Course - Workshop session" },
+          { url: "/images/cv_pop_up_course/1763761668799.jpg", alt: "Computer Vision Pop-Up Course - Course conclusion and kit distribution" }
+        ]
+      }
+    ]
   },
   education: [
       {
@@ -403,16 +447,6 @@ const portfolioData: PortfolioData = {
     { course: "CSCI 1302 Software Development - Prof. Krzysztof J. Kochut", role: "Grading projects and assignments, and helping students in developing programs in Java.", date: "Summer 2019, Spring 2020" },
     { course: "CSCI 2720 Data Structures - Dr. Sachin Meena", role: "Grading and helping students with abstract data types, algorithm analysis, sorting, recursion.", date: "Fall 2019" },
     { course: "CSCI 4250/6250 Cybersecurity - Dr. Mustakimar Khandaker", role: "Grading projects and assignments on system security (stack/buffer overflow, return to libc attack, format string attack).", date: "Fall 2020" }
-  ],
-  industryOutreach: [
-    {
-      title: "UGA Manufacturing Living Lab Pop-Up Course",
-      organization: "University of Georgia",
-      location: "Athens, GA",
-      date: "Nov 2025",
-      role: "Lead Instructor",
-      topic: "Computer Vision for Manufacturing Upskilling"
-    }
   ]
 };
 
@@ -529,6 +563,101 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, level }) => {
   );
 };
 
+/**
+ * An image carousel component for displaying multiple images.
+ */
+interface ImageCarouselProps {
+  images: { url: string; alt: string }[];
+}
+
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  if (images.length === 0) return null;
+
+  return (
+    <div className="mt-4 mb-4">
+      <h6 className="text-sm font-semibold text-gray-700 mb-3">Gallery:</h6>
+      <div className="relative w-full">
+        {/* Main Image Container */}
+        <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden bg-gray-100 shadow-md flex items-center justify-center">
+          <img
+            src={images[currentIndex].url}
+            alt={images[currentIndex].alt}
+            className="max-w-full max-h-full object-contain"
+          />
+          
+          {/* Navigation Buttons */}
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={goToPrevious}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+                aria-label="Previous image"
+              >
+                <ChevronLeft size={20} className="text-gray-700" />
+              </button>
+              <button
+                onClick={goToNext}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+                aria-label="Next image"
+              >
+                <ChevronRight size={20} className="text-gray-700" />
+              </button>
+            </>
+          )}
+
+          {/* Image Counter */}
+          {images.length > 1 && (
+            <div className="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">
+              {currentIndex + 1} / {images.length}
+            </div>
+          )}
+        </div>
+
+        {/* Thumbnail Navigation */}
+        {images.length > 1 && (
+          <div className="flex gap-2 mt-3 overflow-x-auto pb-2">
+            {images.map((image, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                  index === currentIndex
+                    ? 'border-green-500 shadow-md scale-105'
+                    : 'border-gray-200 hover:border-green-300 opacity-70 hover:opacity-100'
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              >
+                <img
+                  src={image.url}
+                  alt={image.alt}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
 // --- Page-Specific Components ---
 
@@ -626,7 +755,7 @@ const CurrentRoleSection: React.FC<CurrentRoleProps> = ({ role }) => (
         </div>
       </div>
 
-      <div>
+      <div className="mb-6">
         <h4 className="font-semibold text-gray-700 mb-3">Active Project: {role.activeProject.title}</h4>
         <p className="text-gray-700 mb-4">{role.activeProject.description}</p>
         <ul className="list-disc list-inside space-y-2 text-gray-600">
@@ -635,6 +764,64 @@ const CurrentRoleSection: React.FC<CurrentRoleProps> = ({ role }) => (
           ))}
         </ul>
       </div>
+
+      {role.industryOutreach && role.industryOutreach.length > 0 && (
+        <div className="mt-8 pt-6 border-t-2 border-green-300">
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200 shadow-lg">
+            <div className="flex items-center mb-4">
+              <Users size={24} className="text-green-600 mr-3" />
+              <h4 className="text-xl font-bold text-gray-800">Industry Outreach</h4>
+            </div>
+            {role.industryOutreach.map((outreach, index) => (
+              <div key={index} className="bg-white rounded-lg p-5 shadow-md border-l-4 border-green-500">
+                <h5 className="text-lg font-semibold text-gray-800 mb-2">{outreach.title}</h5>
+                <p className="text-md text-gray-700 mb-1"><span className="font-semibold">Organization:</span> {outreach.organization}</p>
+                <p className="text-sm text-gray-600 mb-3">{outreach.date} | {outreach.location}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {outreach.role}
+                  </span>
+                  <span className="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {outreach.topic}
+                  </span>
+                </div>
+                {outreach.highlights && outreach.highlights.length > 0 && (
+                  <div className="mb-4">
+                    <h6 className="text-sm font-semibold text-gray-700 mb-2">Highlights:</h6>
+                    <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
+                      {outreach.highlights.map((highlight, hIndex) => (
+                        <li key={hIndex}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {outreach.images && outreach.images.length > 0 && (
+                  <ImageCarousel images={outreach.images} />
+                )}
+                {outreach.links && outreach.links.length > 0 && (
+                  <div className="mt-4 pt-3 border-t border-gray-200">
+                    <h6 className="text-sm font-semibold text-gray-700 mb-2">Coverage:</h6>
+                    <div className="flex flex-wrap gap-2">
+                      {outreach.links.map((link, lIndex) => (
+                        <a
+                          key={lIndex}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium transition-colors"
+                        >
+                          <Globe size={14} className="mr-1" />
+                          {link.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </Card>
   </Section>
 );
@@ -774,26 +961,6 @@ const TeachingSection: React.FC<TeachingProps> = ({ items }) => (
   </Section>
 );
 
-interface IndustryOutreachProps {
-  items: IndustryOutreach[];
-}
-
-const IndustryOutreachSection: React.FC<IndustryOutreachProps> = ({ items }) => (
-  <Section title="Industry Outreach" icon={Briefcase}>
-    <div className="space-y-4">
-      {items.map((item, index) => (
-        <Card key={index} className="border-l-4 border-green-500">
-          <h3 className="text-xl font-semibold text-gray-800">{item.title}</h3>
-          <p className="text-lg text-gray-600">{item.organization}</p>
-          <p className="text-sm text-gray-500 mb-2">{item.date} | {item.location}</p>
-          <p className="text-gray-700 mb-2"><span className="font-semibold">Role:</span> {item.role}</p>
-          <p className="text-gray-700"><span className="font-semibold">Topic:</span> {item.topic}</p>
-        </Card>
-      ))}
-    </div>
-  </Section>
-);
-
 interface FooterProps {
   name: string;
 }
@@ -823,9 +990,6 @@ const Home: React.FC = () => {
         <EducationSection items={data.education} />
         <ClassProjects items={data.projects} />
         <TeachingSection items={data.teaching} />
-        {data.industryOutreach && data.industryOutreach.length > 0 && (
-          <IndustryOutreachSection items={data.industryOutreach} />
-        )}
       </main>
       <Footer name={data.personalInfo.name} />
     </>
