@@ -673,7 +673,7 @@ const Header: React.FC<HeaderProps> = ({ info }) => {
     <header className="bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
       <div className="max-w-5xl mx-auto">
         {/* Navigation */}
-        <nav className="mb-6 flex justify-center md:justify-start">
+        <nav className="mb-6 flex justify-center md:justify-between items-center">
           <div className="flex gap-4">
             <Link
               to="/"
@@ -695,6 +695,14 @@ const Header: React.FC<HeaderProps> = ({ info }) => {
               Stories
             </Link>
           </div>
+          <a
+            href="https://alirezavaezi.com/USDA-360-virtual-tour"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 rounded-lg transition-colors duration-300 bg-gray-700 hover:bg-gray-600 text-white"
+          >
+            USDA 360° Tour
+          </a>
         </nav>
 
         <div className="flex flex-col md:flex-row items-center justify-between">
