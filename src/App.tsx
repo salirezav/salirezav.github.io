@@ -138,7 +138,7 @@ const portfolioData: PortfolioData = {
       { name: "UGA Email", url: "mailto:SeyedAlireza.Vaezi@uga.edu", icon: Mail },
       { name: "GitHub", url: "https://github.com/salirezav", icon: Github },
       { name: "LinkedIn", url: "https://www.linkedin.com/in/salirezav/", icon: Linkedin },
-      { name: "Google Scholar", url: "https://scholar.google.com/citations?user=YOUR_USER_ID", icon: BookOpen }, // TODO: Replace YOUR_USER_ID with your actual Google Scholar user ID
+      { name: "Google Scholar", url: "https://scholar.google.com/citations?user=XT5XWLMAAAAJ&hl=en", icon: BookOpen }, // TODO: Replace YOUR_USER_ID with your actual Google Scholar user ID
       { name: "Resume", url: "https://salirezav.github.io/Seyed%20Alireza%20Vaezi%20-%20Resume.pdf", icon: FileText }
     ]
   },
@@ -213,23 +213,23 @@ const portfolioData: PortfolioData = {
     ]
   },
   education: [
-      {
-        degree: "Ph.D., Computer Science",
-        institution: "University of Georgia",
-        location: "Athens, Georgia",
-        date: "Jan. 2019 - May. 2025",
-        gpa: "3.74",
-        thesis: '"From Specific to Universal: One Biomedical Image Segmentation Model to Rule Them All"',
-        advisor: "Dr. Shannon Quinn"
-      },
-      {
-        degree: "Master of Science., Information Technology Engineering (Computer Networks)",
-        institution: "Iran University of Science and Technology",
-        location: "Tehran, Iran",
-        date: "Jan. 2013 - Feb. 2016",
-        gpa: "3.06",
-        thesis: '"Performance Evaluation of Live Migration of Virtual Machines with Secured Data-Plane"'
-      },
+    {
+      degree: "Ph.D., Computer Science",
+      institution: "University of Georgia",
+      location: "Athens, Georgia",
+      date: "Jan. 2019 - May. 2025",
+      gpa: "3.74",
+      thesis: '"From Specific to Universal: One Biomedical Image Segmentation Model to Rule Them All"',
+      advisor: "Dr. Shannon Quinn"
+    },
+    {
+      degree: "Master of Science., Information Technology Engineering (Computer Networks)",
+      institution: "Iran University of Science and Technology",
+      location: "Tehran, Iran",
+      date: "Jan. 2013 - Feb. 2016",
+      gpa: "3.06",
+      thesis: '"Performance Evaluation of Live Migration of Virtual Machines with Secured Data-Plane"'
+    },
     {
       degree: "Bachelor of Science., Information Technology Engineering",
       institution: "Azad University of Parand",
@@ -579,13 +579,13 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
@@ -607,7 +607,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
             alt={images[currentIndex].alt}
             className="max-w-full max-h-full object-contain"
           />
-          
+
           {/* Navigation Buttons */}
           {images.length > 1 && (
             <>
@@ -643,11 +643,10 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-                  index === currentIndex
+                className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 ${index === currentIndex
                     ? 'border-green-500 shadow-md scale-105'
                     : 'border-gray-200 hover:border-green-300 opacity-70 hover:opacity-100'
-                }`}
+                  }`}
                 aria-label={`Go to image ${index + 1}`}
               >
                 <img
