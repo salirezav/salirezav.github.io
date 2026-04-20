@@ -113,6 +113,7 @@ interface IndustryOutreach {
 
 interface PortfolioData {
   personalInfo: PersonalInfo;
+  bio: string;
   currentRole: CurrentRole;
   education: Education[];
   technicalSkills: SkillGroup[];
@@ -141,6 +142,7 @@ const portfolioData: PortfolioData = {
       { name: "Resume", url: "https://salirezav.github.io/Seyed%20Alireza%20Vaezi%20-%20Resume.pdf", icon: FileText }
     ]
   },
+  bio: "Dr. Seyed Alireza Vaezi is a Post-Doctoral Research Associate in the College of Engineering at the University of Georgia, where he also earned his Ph.D. in Computer Science. While his foundational research focused on applying computer vision and deep learning to multidimensional biomedical images and videos, his current work bridges the gap between theoretical AI and practical implementation for smart manufacturing and agricultural automation. He serves as the team coordinator and lead of the computer vision team for a USDA-funded pecan post-harvest optimization project, designing closed-loop automation systems for real-time quality control. In addition to his research, Dr. Vaezi mentors graduate students and actively partners with industry leaders to translate complex AI concepts into actionable corporate solutions.",
   currentRole: {
     title: "Post-Doctoral Research Associate, College of Engineering",
     institution: "University of Georgia",
@@ -749,6 +751,18 @@ interface CurrentRoleProps {
   role: CurrentRole;
 }
 
+interface BioSectionProps {
+  bio: string;
+}
+
+const BioSection: React.FC<BioSectionProps> = ({ bio }) => (
+  <Section title="Bio" icon={BookOpen}>
+    <Card>
+      <p className="text-gray-700 leading-relaxed">{bio}</p>
+    </Card>
+  </Section>
+);
+
 const CurrentRoleSection: React.FC<CurrentRoleProps> = ({ role }) => (
   <Section title="Current Role" icon={Briefcase}>
     <Card>
@@ -991,6 +1005,7 @@ const Home: React.FC = () => {
   return (
     <>
       <main className="max-w-5xl mx-auto p-4 md:p-8">
+        <BioSection bio={data.bio} />
         <CurrentRoleSection role={data.currentRole} />
         <RelatedExperienceSection items={data.relatedExperience} />
         <TechnicalSkills skills={data.technicalSkills} />
