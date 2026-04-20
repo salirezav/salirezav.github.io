@@ -144,27 +144,30 @@ const portfolioData: PortfolioData = {
   },
   bio: "Dr. Seyed Alireza Vaezi is a Post-Doctoral Research Associate in the College of Engineering at the University of Georgia, where he also earned his Ph.D. in Computer Science. While his foundational research focused on applying computer vision and deep learning to multidimensional biomedical images and videos, his current work bridges the gap between theoretical AI and practical implementation for smart manufacturing and agricultural automation. He serves as the team coordinator and lead of the computer vision team for a USDA-funded pecan post-harvest optimization project, designing closed-loop automation systems for real-time quality control. In addition to his research, Dr. Vaezi mentors graduate students and actively partners with industry leaders to translate complex AI concepts into actionable corporate solutions.",
   currentRole: {
-    title: "Post-Doctoral Research Associate, College of Engineering",
-    institution: "University of Georgia",
+    title: "Post-Doctoral Research Associate",
+    institution: "College of Engineering, University of Georgia",
     location: "Athens, Georgia",
     date: "June 2025 - Present",
     duties: [
-      "Project Management",
+      "Project Coordination",
+      "Industry Training & Knowledge Transfer",
+      "Outreach & Industry Engagement",
       "Student Mentorship",
       "Proposal Development",
       "Research and Innovation",
-      "Collaborating and Networking",
       "Publication and Dissemination"
     ],
     activeProject: {
-      title: "Pecan Post-Harvest Control and Optimization - Funded by USDA",
-      description: "My role involves developing solutions for incorporating computer vision to analyze the output of pecan processing machinery, enabling real-time quality control and automation.",
+      title: "Pecan Post-Harvest Control and Optimization - Funded by United States Department of Agriculture (USDA)",
+      description: "Designed, architected, and deployed closed-loop computer vision and automation systems for pecan processing, enabling real-time quality control, defect detection, and data-driven machinery optimization.",
       points: [
-        "Designed, developed, and deployed a full-stack vision system, including hardware integration and a custom management API for automated data acquisition and system control.",
-        "Spearheaded the collection of a large-scale video dataset, establishing the foundation for training robust deep learning models for defect detection and yield analysis.",
-        "Architected the framework for a closed-loop automation system where real-time analysis will intelligently control and optimize machine parameters.",
-        "Engineered a solution that accelerates the research lifecycle by automating data analysis, leading to faster, more accurate, and streamlined experimentation.",
-        "Presented 'AI Vision System and Automation Integration' research at the USDA Pecan Workshop 2025, hosted at the University of Georgia, to an audience of industry leaders and academic peers."
+        "Directed interdisciplinary research efforts and managed weekly meetings for the federally funded USDA Pecan Project, ensuring technical milestones are met.",
+        "Designed and delivered a specialized computer vision course for industry partners, translating complex AI concepts into practical, actionable applications.",
+        "Presented technical findings at the Annual USDA Pecan Workshop and the Southeastern Pecan Growers Association (SEPGA) Convention.",
+        "Conducted strategic outreach and site visits with corporate partners, including Southwire, Boehringer Ingelheim, and Label Source, to bridge research and real-world deployment.",
+        "Architected a full-stack, closed-loop automation system featuring a custom REST API for seamless data acquisition and real-time hardware control.",
+        "Developed and deployed automated computer vision solutions directly into pecan processing machinery to enable real-time quality control and defect detection.",
+        "Spearheaded the collection of a large-scale video dataset and engineered automated analysis pipelines, laying the groundwork for robust deep learning models and significantly accelerating the research lifecycle."
       ]
     },
     industryOutreach: [
