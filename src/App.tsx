@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Mail, Globe, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Github, Linkedin, FileText, Brain, Briefcase, GraduationCap, Users, Code, Database, Wrench, BookOpen, LucideIcon } from 'lucide-react';
 import Stories from './Stories';
@@ -29,10 +29,14 @@ interface PersonalInfo {
   links: SocialLink[];
 }
 
+interface LabeledPoint {
+  label: string;
+  description: string;
+}
+
 interface ActiveProject {
   title: string;
-  description: string;
-  points: string[];
+  points: LabeledPoint[];
 }
 
 interface CurrentRole {
@@ -40,7 +44,8 @@ interface CurrentRole {
   institution: string;
   location: string;
   date: string;
-  duties: string[];
+  leadership: LabeledPoint[];
+  principalDuties: LabeledPoint[];
   activeProject: ActiveProject;
   industryOutreach?: IndustryOutreach[];
 }
@@ -665,6 +670,64 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
 // --- Page-Specific Components ---
 
+const PROFILE_HEADLINE = 'Post-Doctoral Research Associate at the University of Georgia';
+
+interface ContactLinksProps {
+  links: SocialLink[];
+  compact?: boolean;
+}
+
+const ContactLinks: React.FC<ContactLinksProps> = ({ links, compact = false }) => (
+  <div className={`flex flex-wrap ${compact ? 'gap-1.5' : 'justify-center md:justify-start gap-4'}`}>
+    {links.map((link) => {
+      const IconComponent = link.icon;
+      return (
+        <a
+          key={link.name}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`flex items-center bg-gray-700 hover:bg-blue-500 transition-colors duration-300 text-white font-medium rounded-lg shadow whitespace-nowrap ${
+            compact ? 'text-xs py-1.5 px-2.5' : 'py-2 px-4'
+          }`}
+        >
+          <IconComponent size={compact ? 14 : 18} className={compact ? 'mr-1' : 'mr-2'} />
+          {link.name}
+        </a>
+      );
+    })}
+  </div>
+);
+
+interface StickyNavbarProps {
+  info: PersonalInfo;
+  visible: boolean;
+}
+
+const StickyNavbar: React.FC<StickyNavbarProps> = ({ info, visible }) => (
+  <nav
+    aria-hidden={!visible}
+    className={`fixed top-0 left-0 right-0 z-50 bg-gray-800 text-white shadow-xl border-b border-gray-700 transition-transform duration-300 ease-in-out ${
+      visible ? 'translate-y-0' : '-translate-y-full pointer-events-none'
+    }`}
+  >
+    <div className="w-full px-4 md:px-8 lg:px-12 py-2.5">
+      <div className="flex items-center gap-3 md:gap-4 mb-2">
+        <img
+          src="/me22.png"
+          alt=""
+          className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-gray-500 flex-shrink-0"
+        />
+        <div className="min-w-0 flex-1">
+          <p className="font-bold text-xs sm:text-sm md:text-base leading-tight">{info.name}</p>
+          <p className="text-[10px] sm:text-xs text-gray-300 leading-snug">{PROFILE_HEADLINE}</p>
+        </div>
+      </div>
+      <ContactLinks links={info.links} compact />
+    </div>
+  </nav>
+);
+
 interface HeaderProps {
   info: PersonalInfo;
 }
@@ -672,80 +735,82 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ info }) => {
   const location = useLocation();
   const isStoriesPage = location.pathname.startsWith('/stories');
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [showStickyNav, setShowStickyNav] = useState(false);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowStickyNav(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <header className="bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
-      <div className="max-w-5xl mx-auto">
-        {/* Navigation */}
-        <nav className="mb-6 flex justify-center md:justify-between items-center">
-          <div className="flex gap-4">
-            <Link
-              to="/"
-              className={`px-4 py-2 rounded-lg transition-colors duration-300 ${!isStoriesPage
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-700 hover:bg-gray-600 text-white'
-                }`}
-            >
-              Portfolio
-            </Link>
-            <Link
-              to="/stories"
-              className={`px-4 py-2 rounded-lg transition-colors duration-300 ${isStoriesPage
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-700 hover:bg-gray-600 text-white'
-                }`}
-            >
-              <BookOpen size={18} className="inline mr-2" />
-              Stories
-            </Link>
-          </div>
-          <a
-            href="https://alirezavaezi.com/USDA-360-virtual-tour"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg transition-colors duration-300 bg-gray-700 hover:bg-gray-600 text-white"
-          >
-            USDA 360° Tour
-          </a>
-        </nav>
+    <>
+      <StickyNavbar info={info} visible={showStickyNav} />
+      <div ref={headerRef}>
+        <header className="bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
+          <div className="max-w-5xl mx-auto">
+            {/* Navigation */}
+            <nav className="mb-6 flex justify-center md:justify-between items-center">
+              <div className="flex gap-4">
+                <Link
+                  to="/"
+                  className={`px-4 py-2 rounded-lg transition-colors duration-300 ${!isStoriesPage
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-700 hover:bg-gray-600 text-white'
+                    }`}
+                >
+                  Portfolio
+                </Link>
+                <Link
+                  to="/stories"
+                  className={`px-4 py-2 rounded-lg transition-colors duration-300 ${isStoriesPage
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-700 hover:bg-gray-600 text-white'
+                    }`}
+                >
+                  <BookOpen size={18} className="inline mr-2" />
+                  Stories
+                </Link>
+              </div>
+              <a
+                href="https://alirezavaezi.com/USDA-360-virtual-tour"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-lg transition-colors duration-300 bg-gray-700 hover:bg-gray-600 text-white"
+              >
+                USDA 360° Tour
+              </a>
+            </nav>
 
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          {/* Profile Image */}
-          <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
-            <img
-              src="/me22.png"
-              alt="Profile"
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-gray-500"
-            />
-          </div>
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              {/* Profile Image */}
+              <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
+                <img
+                  src="/me22.png"
+                  alt="Profile"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-gray-500"
+                />
+              </div>
 
-          {/* Info */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-bold mb-2">{info.name}</h1>
-            <p className="text-xl text-gray-300 mb-6">Post-Doctoral Research Associate at the University of Georgia</p>
-
-            {/* Contact Links */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {info.links.map((link) => {
-                const IconComponent = link.icon;
-                return (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center bg-gray-700 hover:bg-blue-500 transition-colors duration-300 text-white font-medium py-2 px-4 rounded-lg shadow"
-                  >
-                    <IconComponent size={18} className="mr-2" />
-                    {link.name}
-                  </a>
-                );
-              })}
+              {/* Info */}
+              <div className="flex-1 text-center md:text-left">
+                <h1 className="text-4xl md:text-5xl font-bold mb-2">{info.name}</h1>
+                <p className="text-xl text-gray-300 mb-6">{PROFILE_HEADLINE}</p>
+                <ContactLinks links={info.links} />
+              </div>
             </div>
           </div>
-        </div>
+        </header>
       </div>
-    </header>
+    </>
   );
 };
 
