@@ -129,7 +129,7 @@ const portfolioData: PortfolioData = {
   personalInfo: {
     name: "Seyed Alireza Vaezi, PhD",
     email: "s.alireza.v@gmail.com",
-    phone: "(470) 819-1137",
+    phone: "(929) 356-5315",
     website: "AlirezaVaezi.com",
     location: "Athens, Georgia",
     links: [
@@ -644,8 +644,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 ${index === currentIndex
-                    ? 'border-green-500 shadow-md scale-105'
-                    : 'border-gray-200 hover:border-green-300 opacity-70 hover:opacity-100'
+                  ? 'border-green-500 shadow-md scale-105'
+                  : 'border-gray-200 hover:border-green-300 opacity-70 hover:opacity-100'
                   }`}
                 aria-label={`Go to image ${index + 1}`}
               >
