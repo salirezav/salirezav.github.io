@@ -73,14 +73,18 @@ interface SkillGroup {
   skills: Skill[];
 }
 
+interface ExperiencePeriod {
+  date: string;
+  points: string[];
+}
+
 interface RelatedExperience {
   title: string;
   institution: string;
-  date: string;
   supervisor?: string;
   location?: string;
   department?: string;
-  points: string[];
+  periods: ExperiencePeriod[];
 }
 
 interface Publication {
@@ -134,7 +138,7 @@ const portfolioData: PortfolioData = {
   personalInfo: {
     name: "Seyed Alireza Vaezi, PhD",
     email: "s.alireza.v@gmail.com",
-    phone: "(929) 356-5315",
+    phone: "(470) 819-1137",
     website: "AlirezaVaezi.com",
     location: "Athens, Georgia",
     links: [
@@ -153,26 +157,53 @@ const portfolioData: PortfolioData = {
     institution: "College of Engineering, University of Georgia",
     location: "Athens, Georgia",
     date: "June 2025 - Present",
-    duties: [
-      "Project Coordination",
-      "Industry Training & Knowledge Transfer",
-      "Outreach & Industry Engagement",
-      "Student Mentorship",
-      "Proposal Development",
-      "Research and Innovation",
-      "Publication and Dissemination"
+    leadership: [
+      {
+        label: "Project Coordination",
+        description: "Directed interdisciplinary research efforts and managed weekly meetings for the federally funded USDA Pecan Project ensuring technical milestones are met."
+      },
+      {
+        label: "Industry Training & Knowledge Transfer",
+        description: "Designed and delivered a specialized Computer Vision course for industry partners, translating complex AI concepts into actionable applications. Additionally, presented technical findings at the Annual USDA Pecan Workshop and the Southeastern Pecan Growers Association (SEPGA) Convention."
+      },
+      {
+        label: "Outreach & Industry Engagement",
+        description: "Bridged the gap between theoretical research and real-world deployment by conducting strategic site visits to corporate partners, including Southwire, Boehringer Ingelheim, and Label Source."
+      }
+    ],
+    principalDuties: [
+      {
+        label: "Student Mentorship",
+        description: "Guiding graduate students through complex research methodologies, experiment design, and academic writing, specifically supporting PhD candidates in robotics, computer vision, and AI."
+      },
+      {
+        label: "Proposal Development",
+        description: "Leading the drafting and strategic planning of competitive federal grant proposals, as well as collaborative initiatives with industry partners, to secure ongoing research funding."
+      },
+      {
+        label: "Research and Innovation",
+        description: "Developing novel computer vision and deep learning frameworks to advance smart manufacturing and agricultural automation, alongside building robust technical infrastructure to support researchers and students."
+      },
+      {
+        label: "Publication and Dissemination",
+        description: "Authoring high-impact papers and presenting technical findings at national conferences and academic workshops."
+      }
     ],
     activeProject: {
-      title: "Pecan Post-Harvest Control and Optimization - Funded by United States Department of Agriculture (USDA)",
-      description: "Designed, architected, and deployed closed-loop computer vision and automation systems for pecan processing, enabling real-time quality control, defect detection, and data-driven machinery optimization.",
+      title: "Pecan Post-Harvest Control and Optimization – Funded by United States Department of Agriculture (USDA)",
       points: [
-        "Directed interdisciplinary research efforts and managed weekly meetings for the federally funded USDA Pecan Project, ensuring technical milestones are met.",
-        "Designed and delivered a specialized computer vision course for industry partners, translating complex AI concepts into practical, actionable applications.",
-        "Presented technical findings at the Annual USDA Pecan Workshop and the Southeastern Pecan Growers Association (SEPGA) Convention.",
-        "Conducted strategic outreach and site visits with corporate partners, including Southwire, Boehringer Ingelheim, and Label Source, to bridge research and real-world deployment.",
-        "Architected a full-stack, closed-loop automation system featuring a custom REST API for seamless data acquisition and real-time hardware control.",
-        "Developed and deployed automated computer vision solutions directly into pecan processing machinery to enable real-time quality control and defect detection.",
-        "Spearheaded the collection of a large-scale video dataset and engineered automated analysis pipelines, laying the groundwork for robust deep learning models and significantly accelerating the research lifecycle."
+        {
+          label: "System Architecture",
+          description: "Architected a full-stack, closed-loop automation system featuring a custom REST API for seamless data acquisition and real-time hardware control."
+        },
+        {
+          label: "Computer Vision Integration",
+          description: "Developed and deployed automated computer vision solutions directly into pecan processing machinery to enable real-time quality control and defect detection."
+        },
+        {
+          label: "Data Engineering & Deep Learning",
+          description: "Spearheaded the collection of a large-scale video dataset and engineered automated analysis pipelines, laying the groundwork for robust deep learning models and significantly accelerating the research lifecycle."
+        }
       ]
     },
     industryOutreach: [
@@ -219,27 +250,26 @@ const portfolioData: PortfolioData = {
   },
   education: [
     {
-      degree: "Ph.D., Computer Science",
-      institution: "University of Georgia",
+      degree: "Ph.D. in Computer Science",
+      institution: "School of Computing, University of Georgia",
       location: "Athens, Georgia",
-      date: "Jan. 2019 - May. 2025",
+      date: "January 2019 – May 2025",
       gpa: "3.74",
-      thesis: '"From Specific to Universal: One Biomedical Image Segmentation Model to Rule Them All"',
-      advisor: "Dr. Shannon Quinn"
+      thesis: '"From Specific to Universal: One Biomedical Image Segmentation Model to Rule Them All"'
     },
     {
-      degree: "Master of Science., Information Technology Engineering (Computer Networks)",
+      degree: "Master of Science in Information Technology Engineering – Computer Networks",
       institution: "Iran University of Science and Technology",
       location: "Tehran, Iran",
-      date: "Jan. 2013 - Feb. 2016",
+      date: "January 2013 – February 2016",
       gpa: "3.06",
       thesis: '"Performance Evaluation of Live Migration of Virtual Machines with Secured Data-Plane"'
     },
     {
-      degree: "Bachelor of Science., Information Technology Engineering",
+      degree: "Bachelor of Science in Information Technology Engineering",
       institution: "Azad University of Parand",
       location: "Tehran, Iran",
-      date: "Sept. 2007 - Jun. 2012",
+      date: "September 2007 – June 2012",
       gpa: "3.00"
     }
   ],
@@ -283,8 +313,10 @@ const portfolioData: PortfolioData = {
         { name: "ASP.NET MVC", level: "Advanced" },
         { name: "Spring MVC", level: "Advanced" },
         { name: "Napari", level: "Advanced" },
+        { name: "REST API", level: "Advanced" },
         { name: "React", level: "Intermediate" },
         { name: "React-Native", level: "Intermediate" },
+        { name: "Unit Testing", level: "Intermediate" },
         { name: "Android Studio", level: "Basic" },
         { name: "AngularJS", level: "Basic" },
       ]
@@ -293,6 +325,7 @@ const portfolioData: PortfolioData = {
       category: "Cluster, Cloud, Virtualization",
       icon: Users,
       skills: [
+        { name: "Linux", level: "Advanced" },
         { name: "Kubernetes (K8S & K3S)", level: "Advanced" },
         { name: "JupyterHub", level: "Advanced" },
         { name: "BinderHub", level: "Advanced" },
@@ -305,9 +338,10 @@ const portfolioData: PortfolioData = {
       ]
     },
     {
-      category: "Machine Learning, Data Science",
+      category: "Artificial Intelligence & Machine Learning",
       icon: Brain,
       skills: [
+        { name: "AI/ML Pipelines", level: "Advanced" },
         { name: "(Self/Un) Supervised Learning", level: "Advanced" },
         { name: "NumPy", level: "Advanced" },
         { name: "Pandas", level: "Advanced" },
@@ -321,72 +355,86 @@ const portfolioData: PortfolioData = {
       ]
     },
     {
-      category: "Microcontrollers",
+      category: "Microcontrollers & Robotics",
       icon: Code,
       skills: [
         { name: "Arduino", level: "Advanced" },
-        { name: "ESP", level: "Advanced" },
+        { name: "ESP32", level: "Advanced" },
+        { name: "ROS", level: "Basic" },
+      ]
+    },
+    {
+      category: "Methodologies & Practices",
+      icon: Wrench,
+      skills: [
+        { name: "Software Engineering", level: "Advanced" },
+        { name: "Software Development", level: "Advanced" },
+        { name: "Agile Methodologies", level: "Advanced" },
+        { name: "Secure Communication", level: "Advanced" },
+        { name: "CI/CD", level: "Advanced" },
+        { name: "ML Frameworks", level: "Advanced" },
       ]
     }
   ],
   relatedExperience: [
     {
-      title: "Research Assistant in Quinn Research Group",
+      title: "Graduate Research Assistant in Quinn Research Group",
       institution: "University of Georgia",
-      date: "2024",
-      supervisor: "Prof. Shannon Quinn",
-      points: [
-        "Developed a supervised cilia segmentation model by leveraging an unsupervised method to generate ground-truth labels. This work focused on automating segmentation tasks, particularly for microscopic cilia images.",
-        "Developed a non-intrusive emotion recognition framework using facial expression recognition (FER) and emotional body posture recognition (EBPR) to assess workers' psychological states in IIoT-enabled manufacturing environments. This research enhances worker well-being by identifying stress, fatigue, and cognitive load in real time. A collaboration with PhD candidate Niloofar Rezaei in Innovation Factory under Dr. Jaime Camelio's supervision.",
-        "Developed a computational model to analyze changes in mitochondrial morphology induced by infection with Mycobacterium marinum (Mmar)."
-      ]
-    },
-    {
-      title: "Research Assistant in Quinn Research Group",
-      institution: "University of Georgia",
-      date: "2023",
-      supervisor: "Prof. Shannon Quinn",
-      points: [
-        "Configuring and setting up 'JupyterHub' on an on-premise cluster with NFS shared storage and LDAP authenticator.",
-        "Configuring and setting up 'BinderHub' allowing students to create sharable, interactive, reproducible environments.",
-        "Research and analysis on deep learning assisted detection of fusion and fission of mitochondria in microscopic images."
-      ]
-    },
-    {
-      title: "Research Assistant in Quinn Research Group",
-      institution: "University of Georgia",
-      date: "Spring 2022 - Fall 2022",
-      supervisor: "Prof. Shannon Quinn",
-      points: [
-        "Setting up and running GitPod on the Rancher Kubernetes cluster for students.",
-        "Setting up and running SeaFile as a shared space for academic work.",
-        "Introduced 'TSeg', a Napari plugin that provides a variety of off-the-shelf segmentation algorithms. [GitHub]"
-      ]
-    },
-    {
-      title: "Research Assistant in Quinn Research Group",
-      institution: "University of Georgia",
-      date: "Summer and Fall 2021",
-      supervisor: "Prof. Shannon Quinn",
-      points: [
-        "Set-up and configure Kubernetes on an on-premise cluster of 5 master and worker nodes using Rancher Kubernetes Engine (RKE) in a High Availability fashion.",
-        "Set-up and configure Rancher on the on-premise cluster.",
-        "Configured Nginx external load balancer for accessing Rancher server nodes.",
-        "Set-up a private docker registry for custom made docker images."
+      location: "Athens, Georgia",
+      supervisor: "Dr. Shannon Quinn",
+      periods: [
+        {
+          date: "2021 - 2025",
+          points: [
+            "Developed a supervised cilia segmentation model by leveraging an unsupervised method to generate ground-truth labels. This work focused on automating segmentation tasks, particularly for microscopic cilia images.",
+            "Developed a non-intrusive emotion recognition framework using facial expression recognition (FER) and Emotional Body Posture Recognition (EBPR) to assess workers' psychological states in Industrial IoT-enabled manufacturing environments. This research enhances worker well-being by identifying stress, fatigue, and cognitive load. A collaboration with Dr. Jaime Camelio's lab in the Department of Engineering, UGA.",
+            "Developed a computational model to analyze changes in mitochondrial morphology induced by infection with Mycobacterium marinum (Mmar), a less virulent relative of Mycobacterium tuberculosis (Mtb)."
+          ]
+        },
+        {
+          date: "2024 & Spring 2025",
+          points: [
+            "Configuring and setting up \"JupyterHub\" on an on-premise cluster with NFS shared storage and LDAP authenticator allowing students at the University of Georgia to easily access a Jupyter environment for their projects and assignments.",
+            "Configuring and setting up \"BinderHub\" allowing students at the University of Georgia to create sharable, interactive, reproducible environments from code repositories.",
+            "Research and analysis on deep learning assisted detection of fusion and fission of mitochondria in microscopic images."
+          ]
+        },
+        {
+          date: "2023",
+          points: [
+            "Setting up and running GitPod on the Rancher Kubernetes cluster for students allowing them to spin up their desired development environment.",
+            "Setting up and running SeaFile as a shared space for academic work and projects.",
+            "Developed \"TSeg\", a Napari plugin that provides a variety of off-the-shelf segmentation algorithms allowing inexperienced users to perform analysis on microscopic cell images. [GitHub]"
+          ]
+        },
+        {
+          date: "Spring 2022 & Fall 2022",
+          points: [
+            "Set up and configured Kubernetes on an on-premise cluster of 5 master and worker nodes using Rancher Kubernetes Engine (RKE) in a High Availability fashion.",
+            "Set up and configured Rancher on the on-premise cluster.",
+            "Configured Nginx external load balancer for accessing Rancher server nodes for administrators.",
+            "Set up a private docker registry for custom made docker images.",
+            "The goal of this project was to allow students to request their desired pods equipped with machine learning or development."
+          ]
+        }
       ]
     },
     {
       title: "Full-Stack Web Developer",
       institution: "Tehran Municipality ICT Organization",
-      date: "Oct. 2016 - Feb. 2017",
       location: "Tehran, Iran",
-      points: [
-        "Enhanced and optimized the page-load speed and network utilization of the municipality's portal (http://www.Tehran.ir).",
-        "Improved the UI and the UX of the portal for hand-held devices.",
-        "Reformed and improved the development tools and code structure by implementing the latest front-end development tools.",
-        "Instructed five employees to use the new development environment."
-      ],
-      department: "IT Department – Portal Section"
+      department: "IT Department – Portal Section",
+      periods: [
+        {
+          date: "October 2016 – February 2017",
+          points: [
+            "Enhanced and optimized the page-load speed and network utilization of the municipality's portal (http://www.Tehran.ir) by creating one custom lightweight JavaScript plugin encompassing all UI functionalities, reducing http requests from 60 to 14.",
+            "Improved the UI and the UX of the portal for hand-held devices.",
+            "Reformed and improved the development tools and code structure of the portal by implementing the latest front-end development tools and techniques in JavaScript.",
+            "Instructed five employees to use the new development environment."
+          ]
+        }
+      ]
     }
   ],
   publications: [
@@ -830,87 +878,44 @@ const BioSection: React.FC<BioSectionProps> = ({ bio }) => (
   </Section>
 );
 
+const LabeledBulletList: React.FC<{ items: LabeledPoint[] }> = ({ items }) => (
+  <ul className="list-disc list-inside space-y-2 text-gray-600">
+    {items.map((item, index) => (
+      <li key={index}>
+        <span className="font-semibold text-gray-700">{item.label}:</span> {item.description}
+      </li>
+    ))}
+  </ul>
+);
+
 const CurrentRoleSection: React.FC<CurrentRoleProps> = ({ role }) => (
   <Section title="Current Role" icon={Briefcase}>
     <Card>
       <h3 className="text-2xl font-semibold text-gray-800">{role.title}</h3>
       <p className="text-lg text-gray-600 mb-1">{role.institution}</p>
-      <p className="text-md text-gray-500 mb-4">{role.date} | {role.location}</p>
+      <p className="text-md text-gray-500 mb-6">{role.date} | {role.location}</p>
 
       <div className="mb-6">
-        <h4 className="font-semibold text-gray-700 mb-3">Duties:</h4>
-        <div className="flex flex-wrap gap-2">
-          {role.duties.map(duty => <Tag key={duty} text={duty} colorClass="bg-blue-100 text-blue-800" />)}
-        </div>
+        <h4 className="font-semibold text-gray-700 mb-3">Leadership & Project Management:</h4>
+        <LabeledBulletList items={role.leadership} />
       </div>
 
       <div className="mb-6">
-        <h4 className="font-semibold text-gray-700 mb-3">Active Project: {role.activeProject.title}</h4>
-        <p className="text-gray-700 mb-4">{role.activeProject.description}</p>
-        <ul className="list-disc list-inside space-y-2 text-gray-600">
-          {role.activeProject.points.map((point, index) => (
-            <li key={index}>{point}</li>
-          ))}
-        </ul>
+        <h4 className="font-semibold text-gray-700 mb-3">Principal Duties & Strategic Impact:</h4>
+        <LabeledBulletList items={role.principalDuties} />
       </div>
 
+      <div>
+        <h4 className="font-semibold text-gray-700 mb-3">Active Projects:</h4>
+        <p className="text-gray-800 font-medium mb-3">{role.activeProject.title}</p>
+        <LabeledBulletList items={role.activeProject.points} />
+      </div>
+
+      {/* Industry Outreach — kept in data for possible restore; not on resume
       {role.industryOutreach && role.industryOutreach.length > 0 && (
-        <div className="mt-8 pt-6 border-t-2 border-green-300">
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200 shadow-lg">
-            <div className="flex items-center mb-4">
-              <Users size={24} className="text-green-600 mr-3" />
-              <h4 className="text-xl font-bold text-gray-800">Industry Outreach</h4>
-            </div>
-            {role.industryOutreach.map((outreach, index) => (
-              <div key={index} className="bg-white rounded-lg p-5 shadow-md border-l-4 border-green-500">
-                <h5 className="text-lg font-semibold text-gray-800 mb-2">{outreach.title}</h5>
-                <p className="text-md text-gray-700 mb-1"><span className="font-semibold">Organization:</span> {outreach.organization}</p>
-                <p className="text-sm text-gray-600 mb-3">{outreach.date} | {outreach.location}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {outreach.role}
-                  </span>
-                  <span className="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {outreach.topic}
-                  </span>
-                </div>
-                {outreach.highlights && outreach.highlights.length > 0 && (
-                  <div className="mb-4">
-                    <h6 className="text-sm font-semibold text-gray-700 mb-2">Highlights:</h6>
-                    <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
-                      {outreach.highlights.map((highlight, hIndex) => (
-                        <li key={hIndex}>{highlight}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {outreach.images && outreach.images.length > 0 && (
-                  <ImageCarousel images={outreach.images} />
-                )}
-                {outreach.links && outreach.links.length > 0 && (
-                  <div className="mt-4 pt-3 border-t border-gray-200">
-                    <h6 className="text-sm font-semibold text-gray-700 mb-2">Coverage:</h6>
-                    <div className="flex flex-wrap gap-2">
-                      {outreach.links.map((link, lIndex) => (
-                        <a
-                          key={lIndex}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium transition-colors"
-                        >
-                          <Globe size={14} className="mr-1" />
-                          {link.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+        ...
       )}
+      */}
     </Card>
   </Section>
 );
@@ -926,8 +931,7 @@ const EducationSection: React.FC<EducationProps> = ({ items }) => (
         <h3 className="text-xl font-semibold text-gray-800">{item.degree}</h3>
         <p className="text-lg text-gray-600">{item.institution}</p>
         <p className="text-sm text-gray-500 mb-2">{item.date} | {item.location} | GPA: {item.gpa}</p>
-        {item.advisor && <p className="text-sm text-gray-600 mb-2">Advisor: {item.advisor}</p>}
-        {item.thesis && <p className="text-gray-700 italic">Thesis: {item.thesis}</p>}
+        {item.thesis && <p className="text-gray-700 italic">Thesis title: {item.thesis}</p>}
       </Card>
     ))}
   </Section>
@@ -967,15 +971,24 @@ interface RelatedExperienceProps {
 const RelatedExperienceSection: React.FC<RelatedExperienceProps> = ({ items }) => (
   <Section title="Related Experience" icon={Briefcase}>
     {items.map((item, index) => (
-      <Accordion key={index} title={item.title} subtitle={`${item.institution} | ${item.date}`}>
+      <Accordion
+        key={index}
+        title={item.title}
+        subtitle={`${item.institution}${item.location ? `, ${item.location}` : ''}`}
+      >
         <div className="p-4">
-          {item.supervisor && <p className="text-md text-gray-600 mb-4">Under {item.supervisor}'s supervision</p>}
+          {item.supervisor && <p className="text-md text-gray-600 mb-4">Under the Direction of {item.supervisor}</p>}
           {item.department && <p className="text-md text-gray-600 mb-4">{item.department}</p>}
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            {item.points.map((point, pIndex) => (
-              <li key={pIndex}>{point}</li>
-            ))}
-          </ul>
+          {item.periods.map((period, pIndex) => (
+            <div key={pIndex} className={pIndex > 0 ? 'mt-6 pt-4 border-t border-gray-200' : ''}>
+              <p className="text-sm font-semibold text-gray-500 mb-3">{period.date}</p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700">
+                {period.points.map((point, pointIndex) => (
+                  <li key={pointIndex}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </Accordion>
     ))}
@@ -987,7 +1000,7 @@ interface PublicationsProps {
 }
 
 const Publications: React.FC<PublicationsProps> = ({ items }) => (
-  <Section title="Publications" icon={BookOpen}>
+  <Section title="Academic Publications" icon={BookOpen}>
     <div className="space-y-6">
       {items.map((item, index) => (
         <Card key={index}>
@@ -1073,13 +1086,13 @@ const Home: React.FC = () => {
     <>
       <main className="max-w-5xl mx-auto p-4 md:p-8">
         <BioSection bio={data.bio} />
-        <CurrentRoleSection role={data.currentRole} />
-        <RelatedExperienceSection items={data.relatedExperience} />
-        <TechnicalSkills skills={data.technicalSkills} />
-        <Publications items={data.publications} />
         <EducationSection items={data.education} />
-        <ClassProjects items={data.projects} />
-        <TeachingSection items={data.teaching} />
+        <CurrentRoleSection role={data.currentRole} />
+        <TechnicalSkills skills={data.technicalSkills} />
+        <RelatedExperienceSection items={data.relatedExperience} />
+        <Publications items={data.publications} />
+        {/* <ClassProjects items={data.projects} /> */}
+        {/* <TeachingSection items={data.teaching} /> */}
       </main>
       <Footer name={data.personalInfo.name} />
     </>
