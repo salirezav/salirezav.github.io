@@ -11,10 +11,22 @@ interface CurrentRoleSectionProps {
   role: CurrentRole;
 }
 
-const CurrentRoleSection: React.FC<CurrentRoleSectionProps> = ({ role }) => (
+const CurrentRoleSection: React.FC<CurrentRoleSectionProps> = ({ role }) => {
+  const [titleLead, ...titleRest] = role.title.split(' ');
+  const titleRemainder = titleRest.join(' ');
+
+  return (
   <Section title="Current Role" icon={Briefcase}>
     <Card>
-      <h3 className="text-2xl font-semibold text-gray-800">{role.title}</h3>
+      <h3 className="text-xl font-semibold leading-tight text-gray-800 sm:text-2xl">
+        <span className="block sm:inline">{titleLead}</span>
+        {titleRemainder && (
+          <>
+            <span className="hidden sm:inline"> </span>
+            <span className="block sm:inline">{titleRemainder}</span>
+          </>
+        )}
+      </h3>
       <p className="text-lg text-gray-600 mb-1">{role.institution}</p>
       <p className="text-md text-gray-500 mb-8">{role.date} | {role.location}</p>
 
@@ -94,6 +106,7 @@ const CurrentRoleSection: React.FC<CurrentRoleSectionProps> = ({ role }) => (
       )}
     </Card>
   </Section>
-);
+  );
+};
 
 export default CurrentRoleSection;

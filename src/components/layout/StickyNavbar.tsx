@@ -1,6 +1,6 @@
 import React from 'react';
 import { PersonalInfo } from '../../types/portfolio';
-import { PROFILE_HEADLINE, PROFILE_IMAGE } from '../../constants/profile';
+import { PROFILE_IMAGE, PROFILE_TITLE_LINES } from '../../constants/profile';
 import ContactLinks from './ContactLinks';
 
 interface StickyNavbarProps {
@@ -24,7 +24,11 @@ const StickyNavbar: React.FC<StickyNavbarProps> = ({ info, visible }) => (
         />
         <div className="min-w-0 flex-1">
           <p className="font-bold text-xs sm:text-sm md:text-base leading-tight">{info.name}</p>
-          <p className="text-[10px] sm:text-xs text-gray-300 leading-snug">{PROFILE_HEADLINE}</p>
+          <p className="text-[10px] sm:text-xs text-gray-300 leading-tight">
+            {PROFILE_TITLE_LINES.map((line) => (
+              <span key={line} className="block">{line}</span>
+            ))}
+          </p>
         </div>
       </div>
       <ContactLinks links={info.links} compact />

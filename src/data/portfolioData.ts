@@ -20,9 +20,9 @@ export const portfolioData: PortfolioData = {
       { name: 'Resume', url: 'https://salirezav.github.io/Seyed%20Alireza%20Vaezi%20-%20Resume.pdf', icon: FileText },
     ],
   },
-  bio: 'Dr. Seyed Alireza Vaezi is a Post-Doctoral Research Associate in the College of Engineering at the University of Georgia, where he also earned his Ph.D. in Computer Science. While his foundational research focused on applying computer vision and deep learning to multidimensional biomedical images and videos, his current work bridges the gap between theoretical AI and practical implementation for smart manufacturing and agricultural automation. He serves as the team coordinator and lead of the computer vision team for a USDA-funded pecan post-harvest optimization project, designing closed-loop automation systems for real-time quality control. In addition to his research, Dr. Vaezi mentors graduate students and actively partners with industry leaders to translate complex AI concepts into actionable corporate solutions.',
+  bio: 'Dr. Seyed Alireza Vaezi builds computer vision systems for segmentation, detection, and real-time inspection. He is team coordinator and computer vision lead on a USDA-funded pecan post-harvest project, designing closed-loop automation that runs quality control and defect detection on processing machinery. Where labeled data is scarce, he trains segmentation models by generating ground-truth labels with unsupervised and self-supervised methods, and he built TSeg, a Napari plugin that offers off-the-shelf segmentation algorithms for microscopic images. He is a Postdoctoral Research Associate in the College of Engineering at the University of Georgia and delivers computer vision training for industry partners.',
   currentRole: {
-    title: 'Post-Doctoral Research Associate',
+    title: 'Postdoctoral Research Associate',
     institution: 'College of Engineering, University of Georgia',
     location: 'Athens, Georgia',
     date: 'June 2025 - Present',
