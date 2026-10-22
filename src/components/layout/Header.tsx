@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BookOpen } from 'lucide-react';
 import { PersonalInfo } from '../../types/portfolio';
-import { PROFILE_HEADLINE, PROFILE_IMAGE, USDA_TOUR_URL } from '../../constants/profile';
+import { PROFILE_IMAGE, PROFILE_TITLE_LINES, USDA_TOUR_URL } from '../../constants/profile';
 import ContactLinks from './ContactLinks';
 import StickyNavbar from './StickyNavbar';
 
@@ -76,7 +76,11 @@ const Header: React.FC<HeaderProps> = ({ info }) => {
 
               <div className="flex-1 text-center md:text-left">
                 <h1 className="text-4xl md:text-5xl font-bold mb-2">{info.name}</h1>
-                <p className="text-xl text-gray-300 mb-6">{PROFILE_HEADLINE}</p>
+                <div className="mb-6 leading-snug">
+                  <p className="text-lg sm:text-xl text-gray-100">{PROFILE_TITLE_LINES[0]}</p>
+                  <p className="text-base sm:text-lg text-gray-300 mt-1">{PROFILE_TITLE_LINES[1]}</p>
+                  <p className="text-base sm:text-lg text-gray-300">{PROFILE_TITLE_LINES[2]}</p>
+                </div>
                 <ContactLinks links={info.links} />
               </div>
             </div>
