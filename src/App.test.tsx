@@ -10,4 +10,7 @@ test('renders portfolio header with name', () => {
     </MemoryRouter>
   );
   expect(screen.getByText(/Seyed Alireza Vaezi, PhD/i)).toBeInTheDocument();
+  const github = screen.getByRole('link', { name: 'GitHub' });
+  expect(github).toHaveAttribute('title', 'GitHub');
+  expect(github).toHaveAttribute('aria-label', 'GitHub');
 });

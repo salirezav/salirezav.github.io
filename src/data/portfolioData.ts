@@ -1,5 +1,6 @@
 import {
   Mail, Globe, Github, Linkedin, FileText, Brain, Code, Database, Wrench, BookOpen, Users,
+  GraduationCap,
 } from 'lucide-react';
 import { PortfolioData } from '../types/portfolio';
 
@@ -13,7 +14,7 @@ export const portfolioData: PortfolioData = {
     links: [
       { name: 'Website', url: 'https://AlirezaVaezi.com', icon: Globe },
       { name: 'Email', url: 'mailto:s.alireza.v@gmail.com', icon: Mail },
-      { name: 'UGA Email', url: 'mailto:SeyedAlireza.Vaezi@uga.edu', icon: Mail },
+      { name: 'UGA Email', url: 'mailto:SeyedAlireza.Vaezi@uga.edu', icon: GraduationCap },
       { name: 'GitHub', url: 'https://github.com/salirezav', icon: Github },
       { name: 'LinkedIn', url: 'https://www.linkedin.com/in/salirezav/', icon: Linkedin },
       { name: 'Google Scholar', url: 'https://scholar.google.com/citations?user=XT5XWLMAAAAJ&hl=en', icon: BookOpen },

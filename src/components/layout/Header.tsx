@@ -65,23 +65,27 @@ const Header: React.FC<HeaderProps> = ({ info }) => {
               </a>
             </nav>
 
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
+            <div className="flex flex-col items-center gap-6 md:flex-row md:items-center md:gap-8">
+              <div className="shrink-0">
                 <img
                   src={PROFILE_IMAGE}
                   alt="Profile"
-                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-gray-500"
+                  className="w-32 h-32 rounded-full border-4 border-gray-500 object-cover md:h-40 md:w-40"
                 />
               </div>
 
-              <div className="flex-1 text-center md:text-left">
-                <h1 className="text-4xl md:text-5xl font-bold mb-2">{info.name}</h1>
-                <div className="mb-6 leading-snug">
-                  <p className="text-lg sm:text-xl text-gray-100">{PROFILE_TITLE_LINES[0]}</p>
-                  <p className="text-base sm:text-lg text-gray-300 mt-1">{PROFILE_TITLE_LINES[1]}</p>
-                  <p className="text-base sm:text-lg text-gray-300">{PROFILE_TITLE_LINES[2]}</p>
+              <div className="flex w-full min-w-0 flex-1 flex-col items-stretch gap-4 lg:flex-row lg:items-center lg:gap-8">
+                <div className="w-full text-center md:text-left lg:w-[20rem] lg:shrink-0 xl:w-[22rem]">
+                  <h1 className="mb-2 text-balance text-4xl font-bold md:text-5xl">{info.name}</h1>
+                  <div className="leading-snug">
+                    <p className="text-lg text-gray-100 sm:text-xl">{PROFILE_TITLE_LINES[0]}</p>
+                    <p className="mt-1 text-base text-gray-300 sm:text-lg">{PROFILE_TITLE_LINES[1]}</p>
+                    <p className="text-base text-gray-300 sm:text-lg">{PROFILE_TITLE_LINES[2]}</p>
+                  </div>
                 </div>
-                <ContactLinks links={info.links} />
+                <div className="w-full min-w-0 lg:flex-1">
+                  <ContactLinks links={info.links} />
+                </div>
               </div>
             </div>
           </div>
