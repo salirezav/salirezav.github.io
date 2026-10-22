@@ -7,7 +7,13 @@ interface ContactLinksProps {
 }
 
 const ContactLinks: React.FC<ContactLinksProps> = ({ links, compact = false }) => (
-  <div className={`flex flex-wrap ${compact ? 'gap-1.5' : 'justify-center md:justify-start gap-4'}`}>
+  <div
+    className={`flex w-full flex-wrap ${
+      compact
+        ? 'justify-start gap-1.5 sm:justify-end sm:gap-2'
+        : 'justify-center gap-2 md:justify-end md:gap-2 lg:gap-2.5 xl:gap-3'
+    }`}
+  >
     {links.map((link) => {
       const IconComponent = link.icon;
       return (
@@ -16,12 +22,23 @@ const ContactLinks: React.FC<ContactLinksProps> = ({ links, compact = false }) =
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex items-center bg-gray-700 hover:bg-blue-500 transition-colors duration-300 text-white font-medium rounded-lg shadow whitespace-nowrap ${
-            compact ? 'text-xs py-1.5 px-2.5' : 'py-2 px-4'
+          aria-label={link.name}
+          title={link.name}
+          className={`inline-flex items-center justify-center rounded-lg bg-gray-700 font-medium text-white shadow transition-colors duration-300 hover:bg-blue-500 ${
+            compact
+              ? 'p-2 sm:px-2 sm:py-1 sm:text-xs lg:px-2.5 lg:py-1.5'
+              : 'p-2 sm:px-2.5 sm:py-1.5 sm:text-sm xl:px-4 xl:py-2 xl:text-base'
           }`}
         >
-          <IconComponent size={compact ? 14 : 18} className={compact ? 'mr-1' : 'mr-2'} />
-          {link.name}
+          <IconComponent
+            aria-hidden="true"
+            className={`shrink-0 ${
+              compact
+                ? 'h-4 w-4 sm:mr-1 sm:h-3.5 sm:w-3.5'
+                : 'h-[18px] w-[18px] sm:mr-1.5 sm:h-4 sm:w-4 xl:mr-2 xl:h-[18px] xl:w-[18px]'
+            }`}
+          />
+          <span className="hidden sm:inline">{link.name}</span>
         </a>
       );
     })}

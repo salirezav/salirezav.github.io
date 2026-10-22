@@ -15,23 +15,27 @@ const StickyNavbar: React.FC<StickyNavbarProps> = ({ info, visible }) => (
       visible ? 'translate-y-0' : '-translate-y-full pointer-events-none'
     }`}
   >
-    <div className="w-full px-4 md:px-8 lg:px-12 py-2.5">
-      <div className="flex items-center gap-3 md:gap-4 mb-2">
-        <img
-          src={PROFILE_IMAGE}
-          alt=""
-          className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-gray-500 flex-shrink-0"
-        />
-        <div className="min-w-0 flex-1">
-          <p className="font-bold text-xs sm:text-sm md:text-base leading-tight">{info.name}</p>
-          <p className="text-[10px] sm:text-xs text-gray-300 leading-tight">
-            {PROFILE_TITLE_LINES.map((line) => (
-              <span key={line} className="block">{line}</span>
-            ))}
-          </p>
+    <div className="w-full px-4 py-2.5 md:px-8 lg:px-12">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <div className="flex w-full min-w-0 items-center gap-3 sm:w-auto sm:shrink-0">
+          <img
+            src={PROFILE_IMAGE}
+            alt=""
+            className="h-10 w-10 shrink-0 rounded-full border-2 border-gray-500 object-cover md:h-12 md:w-12"
+          />
+          <div className="min-w-0">
+            <p className="text-xs font-bold leading-tight sm:text-sm md:text-base">{info.name}</p>
+            <p className="text-[10px] leading-tight text-gray-300 sm:text-xs">
+              {PROFILE_TITLE_LINES.map((line) => (
+                <span key={line} className="block">{line}</span>
+              ))}
+            </p>
+          </div>
+        </div>
+        <div className="w-full min-w-0 sm:min-w-[12rem] sm:w-auto sm:flex-1">
+          <ContactLinks links={info.links} compact />
         </div>
       </div>
-      <ContactLinks links={info.links} compact />
     </div>
   </nav>
 );
