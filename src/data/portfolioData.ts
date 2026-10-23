@@ -18,7 +18,7 @@ export const portfolioData: PortfolioData = {
       { name: 'GitHub', url: 'https://github.com/salirezav', icon: Github },
       { name: 'LinkedIn', url: 'https://www.linkedin.com/in/salirezav/', icon: Linkedin },
       { name: 'Google Scholar', url: 'https://scholar.google.com/citations?user=XT5XWLMAAAAJ&hl=en', icon: BookOpen },
-      { name: 'Resume', url: 'https://salirezav.github.io/Seyed%20Alireza%20Vaezi%20-%20Resume.pdf', icon: FileText },
+      { name: 'Resume', url: '/Seyed-Alireza-Vaezi-Resume.pdf', icon: FileText },
     ],
   },
   bio: 'Dr. Seyed Alireza Vaezi builds computer vision systems for segmentation, detection, and real-time inspection. He is team coordinator and computer vision lead on a USDA-funded pecan post-harvest project, designing closed-loop automation that runs quality control and defect detection on processing machinery. Where labeled data is scarce, he trains segmentation models by generating ground-truth labels with unsupervised and self-supervised methods, and he built TSeg, a Napari plugin that offers off-the-shelf segmentation algorithms for microscopic images. He is a Postdoctoral Research Associate in the College of Engineering at the University of Georgia and delivers computer vision training for industry partners.',
