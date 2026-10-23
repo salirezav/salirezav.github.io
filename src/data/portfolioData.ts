@@ -8,7 +8,7 @@ export const portfolioData: PortfolioData = {
   personalInfo: {
     name: 'Seyed Alireza Vaezi, PhD',
     email: 's.alireza.v@gmail.com',
-    phone: '(470) 819-1137',
+    phone: '(929) 356-5315',
     website: 'AlirezaVaezi.com',
     location: 'Athens, Georgia',
     links: [
