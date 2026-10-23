@@ -78,9 +78,18 @@ const Header: React.FC<HeaderProps> = ({ info }) => {
                 <div className="w-full text-center md:text-left lg:w-[20rem] lg:shrink-0 xl:w-[22rem]">
                   <h1 className="mb-2 text-balance text-4xl font-bold md:text-5xl">{info.name}</h1>
                   <div className="leading-snug">
-                    <p className="text-lg text-gray-100 sm:text-xl">{PROFILE_TITLE_LINES[0]}</p>
-                    <p className="mt-1 text-base text-gray-300 sm:text-lg">{PROFILE_TITLE_LINES[1]}</p>
-                    <p className="text-base text-gray-300 sm:text-lg">{PROFILE_TITLE_LINES[2]}</p>
+                    {PROFILE_TITLE_LINES.map((line, index) => (
+                      <p
+                        key={line}
+                        className={
+                          index === 0
+                            ? 'text-balance text-lg text-gray-100 sm:text-xl'
+                            : `text-balance text-base text-gray-300 sm:text-lg${index === 1 ? ' mt-1' : ''}`
+                        }
+                      >
+                        {line}
+                      </p>
+                    ))}
                   </div>
                 </div>
                 <div className="w-full min-w-0 lg:flex-1">

@@ -21,7 +21,7 @@ export const portfolioData: PortfolioData = {
       { name: 'Resume', url: '/Seyed-Alireza-Vaezi-Resume.pdf', icon: FileText },
     ],
   },
-  bio: 'Dr. Seyed Alireza Vaezi builds computer vision systems for segmentation, detection, and real-time inspection. He is team coordinator and computer vision lead on a USDA-funded pecan post-harvest project, designing closed-loop automation that runs quality control and defect detection on processing machinery. Where labeled data is scarce, he trains segmentation models by generating ground-truth labels with unsupervised and self-supervised methods, and he built TSeg, a Napari plugin that offers off-the-shelf segmentation algorithms for microscopic images. He is a Postdoctoral Research Associate in the College of Engineering at the University of Georgia and delivers computer vision training for industry partners.',
+  bio: 'Dr. Seyed Alireza Vaezi is a Computer Vision & Machine Learning Scientist and a Postdoctoral Research Associate in the College of Engineering at the University of Georgia. He coordinates a USDA-funded pecan post-harvest project, where he added automated, event-triggered video acquisition to an existing IIoT line and supplied the camera and data pipeline for the team\'s YOLO model. This work lays the groundwork for closed-loop automated process control. Where labeled data is scarce, he trains segmentation models on pseudo-labels from unsupervised and self-supervised methods, and he built TSeg, a Napari plugin that offers off-the-shelf segmentation algorithms for microscopic images. He also delivers computer vision training for industry partners.',
   currentRole: {
     title: 'Postdoctoral Research Associate',
     institution: 'College of Engineering, University of Georgia',
@@ -30,11 +30,11 @@ export const portfolioData: PortfolioData = {
     leadership: [
       {
         label: 'Project Coordination',
-        description: 'Directed interdisciplinary research efforts and managed weekly meetings for the federally funded USDA Pecan Project ensuring technical milestones are met.',
+        description: 'Coordinates the interdisciplinary USDA pecan project team of 10 graduate students, leading weekly meetings and tracking technical milestones.',
       },
       {
         label: 'Industry Training & Knowledge Transfer',
-        description: 'Designed and delivered a specialized Computer Vision course for industry partners, translating complex AI concepts into actionable applications. Additionally, presented technical findings at the Annual USDA Pecan Workshop and the Southeastern Pecan Growers Association (SEPGA) Convention.',
+        description: 'Designed and delivered a specialized Computer Vision course for industry partners, translating complex AI concepts into actionable applications. Presented technical findings at the Pecan Post-Harvest Research Workshop and the Southeastern Pecan Growers Association (SEPGA) Convention.',
       },
       {
         label: 'Outreach & Industry Engagement',
@@ -44,7 +44,7 @@ export const portfolioData: PortfolioData = {
     principalDuties: [
       {
         label: 'Student Mentorship',
-        description: 'Guiding graduate students through complex research methodologies, experiment design, and academic writing, specifically supporting PhD candidates in robotics, computer vision, and AI.',
+        description: 'Mentoring 5 Ph.D. students and 2 master\'s students across robotic navigation, generative CAD, 3D vision, and engineering experiment design.',
       },
       {
         label: 'Proposal Development',
@@ -63,16 +63,16 @@ export const portfolioData: PortfolioData = {
       title: 'Pecan Post-Harvest Control and Optimization – Funded by United States Department of Agriculture (USDA)',
       points: [
         {
-          label: 'System Architecture',
-          description: 'Architected a full-stack, closed-loop automation system featuring a custom REST API for seamless data acquisition and real-time hardware control.',
+          label: 'Automated Data Acquisition',
+          description: 'Integrated event-triggered video acquisition into an existing IIoT-instrumented processing line. A FastAPI service records camera streams from MQTT machine-state events during cracking and shelling.',
         },
         {
           label: 'Computer Vision Integration',
-          description: 'Developed and deployed automated computer vision solutions directly into pecan processing machinery to enable real-time quality control and defect detection.',
+          description: 'Integrated cameras and lighting for in-line inspection of pecan cracking and shelling, supplying the camera and data pipeline for the team\'s YOLO model. Live overlays reach over 90% per-class accuracy at 8–12 FPS. The in-line vision integration, live yield estimation, and crack segmentation and classification methods are the subject of an invention disclosure submitted to UGA.',
         },
         {
-          label: 'Data Engineering & Deep Learning',
-          description: 'Spearheaded the collection of a large-scale video dataset and engineered automated analysis pipelines, laying the groundwork for robust deep learning models and significantly accelerating the research lifecycle.',
+          label: 'Data & Annotation',
+          description: 'Built a dataset of about 200 processing-run videos and an in-house annotation and pseudo-labeling tool. On a set of about 1,500 videos, that workflow cut estimated annotation from about 15,000 hours to about 30 minutes. The resulting models monitor output quality, laying the groundwork for closed-loop automated process control.',
         },
       ],
     },
@@ -256,7 +256,7 @@ export const portfolioData: PortfolioData = {
         {
           date: '2021 - 2025',
           points: [
-            'Developed a supervised cilia segmentation model by leveraging an unsupervised method to generate ground-truth labels. This work focused on automating segmentation tasks, particularly for microscopic cilia images.',
+            'Trained a supervised cilia segmentation model on self-supervised pseudo-labels instead of manual annotation.',
             "Developed a non-intrusive emotion recognition framework using facial expression recognition (FER) and Emotional Body Posture Recognition (EBPR) to assess workers' psychological states in Industrial IoT-enabled manufacturing environments. This research enhances worker well-being by identifying stress, fatigue, and cognitive load. A collaboration with Dr. Jaime Camelio's lab in the Department of Engineering, UGA.",
             'Developed a computational model to analyze changes in mitochondrial morphology induced by infection with Mycobacterium marinum (Mmar), a less virulent relative of Mycobacterium tuberculosis (Mtb).',
           ],
@@ -285,6 +285,19 @@ export const portfolioData: PortfolioData = {
             'Configured Nginx external load balancer for accessing Rancher server nodes for administrators.',
             'Set up a private docker registry for custom made docker images.',
             'The goal of this project was to allow students to request their desired pods equipped with machine learning or development.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Graduate Teaching Assistant',
+      institution: 'University of Georgia',
+      location: 'Athens, Georgia',
+      periods: [
+        {
+          date: '2019 - 2021',
+          points: [
+            'Supported computer science courses prior to the Graduate Research Assistant role in the Quinn Research Group.',
           ],
         },
       ],
