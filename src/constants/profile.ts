@@ -1,7 +1,8 @@
 export const PROFILE_TITLE_LINES = [
+  'Computer Vision & Machine Learning Scientist',
   'Postdoctoral Research Associate',
   'College of Engineering',
-  'The University of Georgia',
+  'University of Georgia',
 ] as const;
 
 export const PROFILE_IMAGE = '/me22.png';
