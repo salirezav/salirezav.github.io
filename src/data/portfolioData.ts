@@ -78,6 +78,38 @@ export const portfolioData: PortfolioData = {
     },
     industryOutreach: [
       {
+        title: 'Pecan Post-Harvest Research Workshop 2026',
+        organization: 'University of Georgia College of Engineering',
+        location: 'Athens, GA',
+        date: 'August 19–20, 2026',
+        role: 'Presenter & Live Demo Lead',
+        topic: 'Computer Vision for Pecan Cracking and Shelling',
+        highlights: [
+          'Presented our USDA-funded computer vision work for pecan cracking and shelling to nearly 120 growers, shellers, equipment makers, and researchers',
+          'Covered automated video capture on an instrumented processing line, plus annotation and pseudo-labeling tooling that sharply reduces labeling time',
+          "Showed how the team's detection model tracks the half-to-full yield ratio as a live process metric",
+          'Ran live, real-time segmentation demos on a benchtop camera rig during the lab tour',
+        ],
+        links: [
+          {
+            name: 'Pecan South Article',
+            url: 'https://www.pecansouthmagazine.com/magazine/article/innovation-at-the-pecan-post-harvest-research-workshop/',
+          },
+          {
+            name: 'Workshop Page',
+            url: 'https://pecanresearch.uga.edu/2026-workshop/',
+          },
+        ],
+        images: [
+          { url: '/images/pecan_workshop_2026/pecan-workshop-2026-1.jpg', alt: 'Pecan Post-Harvest Research Workshop 2026 - Presenting the motivation and roadmap' },
+          { url: '/images/pecan_workshop_2026/pecan-workshop-2026-2.jpg', alt: 'Pecan Post-Harvest Research Workshop 2026 - Presenting live pecan detection results' },
+          { url: '/images/pecan_workshop_2026/pecan-workshop-2026-3.jpg', alt: 'Pecan Post-Harvest Research Workshop 2026 - Live real-time segmentation demo' },
+          { url: '/images/pecan_workshop_2026/pecan-workshop-2026-4.jpg', alt: 'Pecan Post-Harvest Research Workshop 2026 - Explaining the live demo output' },
+          { url: '/images/pecan_workshop_2026/pecan-workshop-2026-5.jpg', alt: 'Pecan Post-Harvest Research Workshop 2026 - Lab tour attendees at the benchtop camera rig' },
+          { url: '/images/pecan_workshop_2026/pecan-workshop-2026-6.jpg', alt: 'Pecan Post-Harvest Research Workshop 2026 - Annotation and pseudo-labeling workflow' },
+        ],
+      },
+      {
         title: 'UGA Manufacturing Living Lab Pop-Up Course',
         organization: 'University of Georgia',
         location: 'Athens, GA',
