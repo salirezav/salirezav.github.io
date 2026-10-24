@@ -88,6 +88,7 @@ export const portfolioData: PortfolioData = {
           'Presented our USDA-funded computer vision work for pecan cracking and shelling to nearly 120 growers, shellers, equipment makers, and researchers',
           'Covered automated video capture on an instrumented processing line, plus annotation and pseudo-labeling tooling that sharply reduces labeling time',
           "Showed how the team's detection model tracks the half-to-full yield ratio as a live process metric",
+          'Presented my segmentation model for shell, crack, and exposed-kernel regions, which tells shellers whether their machines produce clean, open cracks without crushing kernels, and turns crack quality into measurable metrics',
           'Ran live, real-time segmentation demos on a benchtop camera rig during the lab tour',
         ],
         links: [
