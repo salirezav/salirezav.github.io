@@ -24,7 +24,7 @@ const ContactLinks: React.FC<ContactLinksProps> = ({ links, compact = false }) =
           rel="noopener noreferrer"
           aria-label={link.name}
           title={link.name}
-          className={`inline-flex items-center justify-center rounded-lg bg-gray-700 font-medium text-white shadow transition-colors duration-300 hover:bg-blue-500 ${
+          className={`inline-flex items-center justify-center rounded-lg bg-gray-700 font-medium text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] transition-colors duration-200 hover:bg-gray-600 ${
             compact
               ? 'p-2 sm:px-2 sm:py-1 sm:text-xs lg:px-2.5 lg:py-1.5'
               : 'p-2 sm:px-2.5 sm:py-1.5 sm:text-sm xl:px-4 xl:py-2 xl:text-base'

@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ info }) => {
     <>
       <StickyNavbar info={info} visible={showStickyNav} />
       <div ref={headerRef}>
-        <header className="bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
+        <header className="site-header bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
           <div className="max-w-5xl mx-auto">
             <nav className="mb-6 flex justify-center md:justify-between items-center">
               <div className="flex gap-4">
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ info }) => {
                 <img
                   src={PROFILE_IMAGE}
                   alt="Profile"
-                  className="w-32 h-32 rounded-full border-4 border-gray-500 object-cover md:h-40 md:w-40"
+                  className="h-32 w-32 rounded-full object-cover shadow-[0_0_0_3px_#1f2937,0_0_0_5px_rgba(147,197,253,0.55),0_8px_24px_-6px_rgba(0,0,0,0.5)] md:h-40 md:w-40"
                 />
               </div>
 

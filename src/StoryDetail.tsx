@@ -107,7 +107,7 @@ const StoryDetail: React.FC = () => {
         <div className="border-t border-gray-200 pt-8">
           <Link
             to="/stories"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+            className="link-underline inline-flex items-center text-blue-600 hover:text-blue-800"
           >
             <BookOpen size={18} className="mr-2" />
             View All Stories

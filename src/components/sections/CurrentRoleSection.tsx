@@ -90,7 +90,7 @@ const CurrentRoleSection: React.FC<CurrentRoleSectionProps> = ({ role }) => {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium transition-colors"
+                          className="link-underline inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
                         >
                           <Globe size={14} className="mr-1" />
                           {link.name}
