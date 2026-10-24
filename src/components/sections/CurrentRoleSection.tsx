@@ -52,6 +52,7 @@ const CurrentRoleSection: React.FC<CurrentRoleSectionProps> = ({ role }) => {
               <Users size={24} className="text-green-600 mr-3" />
               <h4 className="text-xl font-bold text-gray-800">Industry Outreach</h4>
             </div>
+            <div className="space-y-6">
             {role.industryOutreach.map((outreach, index) => (
               <div key={index} className="bg-white rounded-lg p-5 shadow-md border-l-4 border-green-500">
                 <h5 className="text-lg font-semibold text-gray-800 mb-2">{outreach.title}</h5>
@@ -101,6 +102,7 @@ const CurrentRoleSection: React.FC<CurrentRoleSectionProps> = ({ role }) => {
                 )}
               </div>
             ))}
+            </div>
           </div>
         </div>
       )}
