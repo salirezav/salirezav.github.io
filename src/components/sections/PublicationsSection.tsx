@@ -21,7 +21,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ items }) => (
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 hover:underline font-medium text-sm transition-colors"
+              className="link-underline text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               {item.linkText || 'Read More'} &rarr;
             </a>
