@@ -62,7 +62,7 @@ const StoryDetail: React.FC = () => {
       {/* Story Content */}
       <article className={`${SITE_SHELL} pb-12`}>
         {/* Header */}
-        <header className="mb-8 max-w-prose">
+        <header className="mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             {story.title}
           </h1>
@@ -79,7 +79,7 @@ const StoryDetail: React.FC = () => {
               return (
                 <p
                   key={index}
-                  className="mb-6 max-w-prose text-lg leading-relaxed text-gray-700"
+                  className="mb-6 text-lg leading-relaxed text-gray-700"
                 >
                   {block.content}
                 </p>
