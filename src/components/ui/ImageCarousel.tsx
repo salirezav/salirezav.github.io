@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ZoomableImage from './ZoomableImage';
 
 interface ImageCarouselProps {
   images: { url: string; alt: string }[];
@@ -22,15 +23,20 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
   if (images.length === 0) return null;
 
+  const gallery = images.map((image) => ({ src: image.url, alt: image.alt }));
+
   return (
     <div className="mt-4 mb-4">
       <h6 className="text-sm font-semibold text-gray-700 mb-3">Gallery:</h6>
       <div className="relative w-full">
-        <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden bg-gray-100 shadow-md flex items-center justify-center">
-          <img
+        <div className="relative flex h-80 w-full items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-md md:h-[420px]">
+          <ZoomableImage
             src={images[currentIndex].url}
             alt={images[currentIndex].alt}
-            className="max-w-full max-h-full object-contain"
+            className="max-h-80 max-w-full object-contain md:max-h-[420px]"
+            gallery={gallery}
+            galleryIndex={currentIndex}
+            counter={images.length > 1 ? `${currentIndex + 1} / ${images.length}` : undefined}
           />
 
           {images.length > 1 && (
@@ -50,12 +56,6 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
                 <ChevronRight size={20} className="text-gray-700" />
               </button>
             </>
-          )}
-
-          {images.length > 1 && (
-            <div className="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">
-              {currentIndex + 1} / {images.length}
-            </div>
           )}
         </div>
 

@@ -9,8 +9,11 @@ test('renders portfolio header with name', () => {
       <App />
     </MemoryRouter>
   );
-  expect(screen.getByText(/Seyed Alireza Vaezi, PhD/i)).toBeInTheDocument();
-  const github = screen.getByRole('link', { name: 'GitHub' });
-  expect(github).toHaveAttribute('title', 'GitHub');
-  expect(github).toHaveAttribute('aria-label', 'GitHub');
+  expect(screen.getByRole('heading', { level: 1, name: /Seyed Alireza Vaezi, PhD/i })).toBeInTheDocument();
+  const githubLinks = screen.getAllByRole('link', { name: 'GitHub' });
+  expect(githubLinks.length).toBeGreaterThan(0);
+  githubLinks.forEach((github) => {
+    expect(github).toHaveAttribute('title', 'GitHub');
+    expect(github).toHaveAttribute('aria-label', 'GitHub');
+  });
 });

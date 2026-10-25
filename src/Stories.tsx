@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Calendar } from 'lucide-react';
 import { stories, formatDate } from './storiesData';
+import { SITE_SHELL } from './constants/layout';
+import ZoomableImage from './components/ui/ZoomableImage';
 
 /**
  * Stories Page Component
@@ -16,8 +18,8 @@ const Stories: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
-        <div className="max-w-5xl mx-auto">
+      <div className="bg-gray-800 text-white py-8 md:py-12 rounded-b-lg shadow-xl mb-12">
+        <div className={SITE_SHELL}>
           <div className="flex items-center mb-4">
             <BookOpen size={32} className="mr-3" />
             <h1 className="text-4xl md:text-5xl font-bold">Stories & Projects</h1>
@@ -29,7 +31,7 @@ const Stories: React.FC = () => {
       </div>
 
       {/* Stories Grid */}
-      <div className="max-w-6xl mx-auto p-4 md:p-8">
+      <div className={`${SITE_SHELL} py-4 md:py-8`}>
         {sortedStories.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">No stories yet. Check back soon!</p>
@@ -37,24 +39,30 @@ const Stories: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sortedStories.map((story) => (
-              <Link
+              <article
                 key={story.id}
-                to={`/stories/${story.id}`}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
               >
-                {/* Cover Image */}
                 {story.coverImage && (
-                  <div className="w-full h-48 overflow-hidden bg-gray-200">
-                    <img
+                  <div className="relative h-48 w-full overflow-hidden bg-gray-200">
+                    <ZoomableImage
                       src={story.coverImage}
                       alt={story.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      frameClassName="relative block h-full w-full"
+                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      overlay={(
+                        <Link
+                          to={`/stories/${story.id}`}
+                          aria-label={story.title}
+                          tabIndex={-1}
+                          className="absolute inset-0 z-[1]"
+                        />
+                      )}
                     />
                   </div>
                 )}
-                
-                {/* Card Content */}
-                <div className="p-6">
+
+                <Link to={`/stories/${story.id}`} className="block p-6">
                   <h2 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
                     {story.title}
                   </h2>
@@ -69,8 +77,8 @@ const Stories: React.FC = () => {
                       {story.content[0].content}
                     </p>
                   )}
-                </div>
-              </Link>
+                </Link>
+              </article>
             ))}
           </div>
         )}
