@@ -1,5 +1,6 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolioData';
+import { SITE_SHELL } from '../constants/layout';
 import Footer from '../components/layout/Footer';
 import BioSection from '../components/sections/BioSection';
 import EducationSection from '../components/sections/EducationSection';
@@ -15,7 +16,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <main className="max-w-5xl mx-auto p-4 md:p-8">
+      <main className={`${SITE_SHELL} py-4 md:py-8`}>
         <CurrentRoleSection role={data.currentRole} />
         <BioSection bio={data.bio} />
         <TechnicalSkillsSection skills={data.technicalSkills} />

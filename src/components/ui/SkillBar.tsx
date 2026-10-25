@@ -19,7 +19,7 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, level }) => {
 
   useLayoutEffect(() => {
     const el = fillRef.current;
-    if (!el) return;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
     if (prefersReducedMotion()) {
       el.style.width = percent;
       return;

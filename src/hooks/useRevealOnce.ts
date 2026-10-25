@@ -3,6 +3,7 @@ import { useLayoutEffect, useRef } from 'react';
 const reduceMotionQuery = '(prefers-reduced-motion: reduce)';
 
 export function prefersReducedMotion(): boolean {
+  if (typeof window.matchMedia !== 'function') return false;
   return window.matchMedia(reduceMotionQuery).matches;
 }
 
@@ -12,7 +13,7 @@ export function useRevealOnce<T extends HTMLElement>() {
 
   useLayoutEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
+    if (!el || typeof IntersectionObserver === 'undefined' || prefersReducedMotion()) return;
 
     el.setAttribute('data-reveal', 'pending');
     const observer = new IntersectionObserver(([entry]) => {

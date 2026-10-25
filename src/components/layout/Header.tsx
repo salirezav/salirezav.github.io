@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { BookOpen } from 'lucide-react';
 import { PersonalInfo } from '../../types/portfolio';
 import { PROFILE_IMAGE, PROFILE_TITLE_LINES, USDA_TOUR_URL } from '../../constants/profile';
+import { SITE_SHELL } from '../../constants/layout';
 import ContactLinks from './ContactLinks';
 import StickyNavbar from './StickyNavbar';
 
@@ -33,8 +34,8 @@ const Header: React.FC<HeaderProps> = ({ info }) => {
     <>
       <StickyNavbar info={info} visible={showStickyNav} />
       <div ref={headerRef}>
-        <header className="site-header bg-gray-800 text-white p-8 md:p-12 rounded-b-lg shadow-xl mb-12">
-          <div className="max-w-5xl mx-auto">
+        <header className="site-header bg-gray-800 text-white py-8 md:py-12 rounded-b-lg shadow-xl mb-12">
+          <div className={SITE_SHELL}>
             <nav className="mb-6 flex justify-center md:justify-between items-center">
               <div className="flex gap-4">
                 <Link
