@@ -10,7 +10,7 @@ interface BioSectionProps {
 const BioSection: React.FC<BioSectionProps> = ({ bio }) => (
   <Section title="Bio" icon={BookOpen}>
     <Card>
-      <p className="max-w-prose text-gray-700 leading-relaxed">{bio}</p>
+      <p className="text-gray-700 leading-relaxed">{bio}</p>
     </Card>
   </Section>
 );
