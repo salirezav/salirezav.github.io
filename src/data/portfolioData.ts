@@ -82,7 +82,7 @@ export const portfolioData: PortfolioData = {
         organization: 'University of Georgia College of Engineering',
         location: 'Athens, GA',
         date: 'August 19–20, 2026',
-        role: 'Presenter & Live Demo Lead',
+        role: 'Presenter',
         topic: 'Computer Vision for Pecan Cracking and Shelling',
         highlights: [
           'Presented our USDA-funded computer vision work for pecan cracking and shelling to nearly 120 growers, shellers, equipment makers, and researchers',
@@ -95,6 +95,10 @@ export const portfolioData: PortfolioData = {
           {
             name: 'Pecan South Article',
             url: 'https://www.pecansouthmagazine.com/magazine/article/innovation-at-the-pecan-post-harvest-research-workshop/',
+          },
+          {
+            name: 'LinkedIn post',
+            url: 'https://www.linkedin.com/posts/salirezav_computervision-machinelearning-agtech-activity-7520166131769311232-j_b2',
           },
           {
             name: 'Workshop Page',
